@@ -1,0 +1,32 @@
+<?php
+
+class Login extends CI_Controller {
+
+    public function __construct() {
+        parent::__construct();
+        $this->load->library(array('session', 'userlib'));
+        $this->load->helper(array('form', 'url', 'security'));
+        $this->load->model(array('memberdb'));
+    }
+
+    public function index() {
+        $this->bukaweb_layout_out("login/index");
+    }
+
+    public function check_credentials() {
+        $data = $this->input->post();
+        $this->userlib->getUser($data['email'],  do_hash($data['password'], 'md5'));
+        if ($this->userlib->id) {
+            $this->session->set_userdata(array("email" => $this->userlib->email, "password" => $this->userlib->password));
+            redirect("home/index");
+        } else {
+            redirect("login");
+        }
+    }
+
+    public function logout() {
+        $this->session->sess_destroy();
+        redirect('login');
+    }
+
+}

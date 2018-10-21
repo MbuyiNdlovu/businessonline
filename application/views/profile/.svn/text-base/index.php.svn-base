@@ -1,0 +1,102 @@
+<div class="panel panel-default">
+    <div class="panel-heading">Welcome to Edit Profile Page. Keep your password as secrete. </div>
+</div>
+<?php
+
+$a_gender = getGender();
+
+if ($num == 1) {
+    echo '<div class="panel panel-default">
+<div class="panel-body">';
+    echo "Name : " . $name . "- <a href=" . base_url() . "index.php/profile/edit_profile/name>update</a>";
+
+    echo ' </div>
+</div>';
+
+
+    echo '<div class="panel panel-default">
+<div class="panel-body">';
+
+
+    echo "Surname : " . $surname . "- <a href=" . base_url() . "index.php/profile/edit_profile/surname>update</a>";
+    echo ' </div>
+</div>';
+
+    echo '<div class="panel panel-default">
+<div class="panel-body">';
+    echo "Gender : " . $a_gender[$gender] . "- <a href=" . base_url() . "index.php/profile/edit_profile/gender>update</a>";
+
+    echo ' </div>
+</div>';
+} else if ($num == 2) {
+    echo '<div class="panel panel-default">
+<div class="panel-body">';
+    echo "Country : " . $country_name . "- <a href=" . base_url() . "index.php/profile/edit_profile/country_id>update</a>";
+    echo ' </div>
+</div>';
+
+    echo '<div class="panel panel-default">
+<div class="panel-body">';
+    echo "Province : " . $province_name . "- <a href=" . base_url() . "index.php/profile/edit_profile/province_id>update</a>";
+    echo ' </div>
+</div>';
+
+
+    echo '<div class="panel panel-default">
+<div class="panel-body">';
+    echo "Location/Physical Address : " . $location . "- <a href=" . base_url() . "index.php/profile/edit_profile/location>update</a>";
+    echo ' </div>
+</div>';
+} else if ($num == 3) {
+
+
+    echo '<div class="panel panel-default">
+<div class="panel-body">';
+    echo "Birth date : " . $dob . "- <a href=" . base_url() . "index.php/profile/edit_profile/dob>update</a>";
+    echo ' </div>
+</div>';
+
+    echo '<div class="panel panel-default">
+<div class="panel-body">';
+    echo "Email : " . $email . "- <a href=" . base_url() . "index.php/profile/edit_profile/email>update</a>";
+    echo ' </div>
+</div>';
+
+
+    echo '<div class="panel panel-default">
+<div class="panel-body">';
+    echo "Password : ***** - <a href=" . base_url() . "index.php/profile/edit_profile/password>update</a>";
+
+    echo ' </div>
+</div>';
+}
+
+
+$prev = $num - 1;
+
+
+
+echo '  <nav>
+  <ul class="pager">';
+
+if ($num > 1) {
+    
+    
+   
+
+    
+    echo "<li><a href=" . base_url() . "index.php/profile/index/$prev>Previous</a></li>";
+}
+
+
+
+$next = $num + 1;
+
+if ($num < 3) {
+    echo "<li><a href=" . base_url() . "index.php/profile/index/$next>Next</a></li>";
+}
+
+
+echo ' </ul>
+</nav>';
+?>

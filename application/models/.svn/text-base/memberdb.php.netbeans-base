@@ -1,0 +1,32 @@
+<?php
+
+class memberdb extends CI_Model {
+
+    public function __construct() {
+        parent::__construct();
+        $this->load->database();
+    }
+
+    public function AddMember($name, $surname, $dob, $gender, $country_id, $provinceID, $location, $contact_no, $email, $password) {
+        $data = array('member_name' => $name, 'member_surname' => $surname, 'member_dob' => $dob, 'member_gender' => $gender, 'country_id' => $country_id, 'member_province_id' => $provinceID, 'member_location' => $location, 'member_contact_no' => $contact_no, 'member_email' => $email, 'member_password' => $password, 'member_date_added' => date('Y-m-d H:i:s'));
+        $this->db->insert('member', $data);
+    }
+
+    public function getMember($email, $password) {
+        $where = array('member.member_email' => $email, 'member.member_password' => $password);
+        $data = array('member.member_id', 'member.member_name', 'member.member_surname', 'member.member_dob', 'member.member_gender', 'member.country_id', 'member.member_province_id', 'member.member_location', 'member.member_contact_no', 'member.member_email', 'member.member_password', 'member.member_date_added', 'member.member_date_updated', 'country.country_name', 'province.province_id', 'province.province_name', 'province.country_id');
+        $query = $this->db->select($data)->from('member')->join('country', 'country.country_id=member.country_id')->join('province', 'province.province_id=member.member_province_id')->where($where)->get();
+        return !empty($query) ? $query->row_array() : false;
+    }
+
+    public function updateMember($field, $newval, $member_id) {
+        $data = array($field => $newval);
+        $where = array('member_id' => $member_id);
+        $this->db->where($where)->update('member', $data);
+    }
+
+    public function emailExists($email) {
+        $query = $this->db->select('member_email')->where('member_email', $email)->get('member');
+        return !empty($query) ? $query->row_array() : false;
+    }
+}

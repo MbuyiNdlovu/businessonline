@@ -1,0 +1,61 @@
+<?php
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+class businessdb extends CI_Model {
+
+    public function __construct() {
+
+        parent::__construct();
+
+        $this->load->database();
+    }
+
+    public function add_business($business_name, $country_id, $province_id, $location, $contact_no, $fax, $email, $member_id) {
+        $data = array("business_name" => $business_name, "country_id" => $country_id,
+            "province_id" => $province_id, "location" => $location, "contact_no" => $contact_no,
+            "fax" => $fax, "email" => $email, "member_id" => $member_id, "date_added" => date("Y-m-d H:i:s"));
+        $this->db->insert("business", $data);
+    }
+
+    public function get_business($business_id) {
+        $sql = "select business.business_id,business.business_name,business.country_id,
+            business.province_id,business.location,business.contact_no,business.fax,business.email,business.member_id,business.date_added,member.member_name,member.member_surname,country.country_name,province.province_name
+            from business left join member on (member.member_id=business.member_id)  left join country on (country.country_id = business.country_id)  left join province on (province.province_id=business.province_id) where business.business_id=$business_id";
+        $query = $this->db->query($sql);
+
+        return !empty($query) ? $query->row_array() : false;
+    }
+
+    public function get_businesses_by_member_id($member_id) {
+        $sql = "select business.business_id,business.business_name,business.country_id,
+            business.province_id,business.location,business.contact_no,business.fax,business.email,business.member_id,business.date_added,member.member_name,member.member_surname,country.country_name,province.province_name
+            from business left join member on (member.member_id=business.member_id)  left join   country on (country.country_id = business.country_id)  left join province on (province.province_id=business.province_id) where business.member_id=$member_id";
+
+        $query = $this->db->query($sql);
+
+        return !empty($query) ? $query->result_array() : false;
+    }
+
+    public function update_business($business_id, $member_id, $fieldname, $new_input) {
+        $data = array($fieldname => $new_input);
+        $where = array("business_id" => $business_id, "member_id" => $member_id);
+        $this->db->where($where)->update("business", $data);
+    }
+
+    public function get_other_businesses($member_id) {
+        $sql = "select business.business_id,business.business_name,business.country_id,
+            business.province_id,business.location,business.contact_no,business.fax,business.email,business.member_id,business.date_added,member.member_name,member.member_surname,country.country_name,province.province_name
+            from business left join member on (member.member_id=business.member_id)  left join   country on (country.country_id = business.country_id)  left join province on (province.province_id=business.province_id) where business.member_id <> $member_id";
+
+        $query = $this->db->query($sql);
+
+        return !empty($query) ? $query->result_array() : false;
+    }
+
+}
+
+?>

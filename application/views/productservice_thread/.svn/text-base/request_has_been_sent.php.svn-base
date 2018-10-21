@@ -1,0 +1,11 @@
+<div class="alert alert-success" role="alert">
+    Your request has been sent.
+</div>
+
+<?php
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+?>

@@ -1,0 +1,52 @@
+<?php
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+
+
+$attributes = array('class' => 'navbar-form navbar-left', 'role' => 'search');
+
+
+echo form_open("/trading/submit_create_productservice",$attributes );
+
+
+             echo  '<div class="form-group">';
+echo form_label("Name:<br/>");
+echo form_input(array("name"=>"productsevicename","type"=>"text",'class'=>'form-control','placeholder'=>'Enter...'));
+ echo '</div>';
+
+             echo  '<div class="form-group">';
+
+echo form_label("Description:<br/>");
+echo form_input(array("name"=>"productsevicedescription","type"=>"text",'class'=>'form-control','placeholder'=>'Enter...'));
+ echo '</div>';
+
+             echo  '<div class="form-group">';
+echo form_label("Code:<br/>");
+echo form_input(array("name"=>"productsevicecode","type"=>"text",'class'=>'form-control','placeholder'=>'Enter...'));
+ echo '</div>';
+             echo  '<div class="form-group">';
+echo form_input(array("name"=>"business_id","type"=>"hidden","value"=>$business_id,'class'=>'form-control','placeholder'=>'Enter...'));
+ echo '</div>';
+   echo  '<div class="form-group">';
+echo form_submit("submit","send",'class="btn btn-default"');
+ echo '</div>';
+echo form_close();
+
+
+
+
+echo '<nav>
+  <ul class="pager">';
+echo "<li><a href=".  base_url()."index.php/trading/get_business_by_id/$business_id>Back</a></li>";
+
+
+  echo '</ul>
+</nav>';
+
+
+?>

@@ -1,0 +1,94 @@
+ 
+
+<div class="panel panel-default">
+    <div class="panel-heading"> 
+<b>Product or Service Details.</b>
+        
+         </div>
+</div>
+
+
+<?php
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+if ($product_service) {
+
+    
+    
+       echo '<div class="panel panel-default">
+<div class="panel-body">';
+ echo "Name : " . $product_service['productservice_name'] ;
+echo ' </div>
+</div>';
+
+    
+   
+
+        echo '<div class="panel panel-default">
+<div class="panel-body">';
+  echo "Description : " . $product_service['productservice_description'] ;
+    
+echo ' </div>
+</div>';
+
+  
+
+
+        echo '<div class="panel panel-default">
+<div class="panel-body">';
+ 
+    echo "Code : " . $product_service['productservice_code'];
+
+echo ' </div>
+</div>';
+
+  
+   
+            echo '<div class="panel panel-default">
+<div class="panel-body">';
+ 
+   echo "Price : " . $product_service['price'];
+   
+    
+
+echo ' </div>
+</div>';
+
+  
+           echo '<nav>
+  <ul class="pager">';
+        
+    
+    if($connection_started){
+    
+     echo "<li><a href=".  base_url()."index.php/productservice_thread/index/$product_service[productservice_id]>Preview</a></li>";  
+    }  else {
+      echo "<li><a href=".  base_url()."index.php/productservice_thread/add_thread_form/$product_service[member_id]/$product_service[productservice_id]>Connect</a></li>";  
+    }
+          echo ' </ul>
+</nav>';
+        
+    
+    
+} else {
+    echo '<div class="alert alert-info" role="alert">';
+      echo "Opps. Something must have been changed.";
+    
+  echo '</div>';
+    
+  
+}
+
+
+
+   echo '<nav>
+  <ul class="pager">';
+        
+   
+echo "<li><a href=$back>Back</a></li>";
+        echo ' </ul>
+</nav>';
+        
+?>

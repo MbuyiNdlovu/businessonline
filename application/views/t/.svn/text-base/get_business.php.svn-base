@@ -1,0 +1,92 @@
+ 
+
+<?php
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+if ($thisbusiness) {
+
+    if ($thisbusiness['member_id'] == $member_id) {
+
+        echo '<div class="panel panel-default">
+    <div class="panel-heading">';
+
+
+        echo "<b>" . $thisbusiness['business_name'] . " Business</b>" . " <a href=" . base_url() . "index.php/trading/business_edit_form/$thisbusiness[business_id]/business_name>Edit</a>";
+
+
+        echo '</div>
+</div>';
+
+
+
+
+
+        echo '<div class="panel panel-default">
+<div class="panel-body">';
+        echo "Products or services : ";
+        echo "<a href=" . base_url() . "index.php/trading/productservice_create_form/$thisbusiness[business_id]>Add</a> | <a href=" . base_url() . "index.php/trading/get_business_productsservices/$thisbusiness[business_id]>view</a>";
+
+        echo ' </div>
+</div>';
+
+
+        echo '<div class="panel panel-default">
+<div class="panel-body">';
+        echo "Country : " . $thisbusiness['country_name'];
+
+
+        echo ' </div>
+</div>';
+
+        echo '<div class="panel panel-default">
+<div class="panel-body">';
+        echo "Province :  " . $thisbusiness['province_name'] . " <a href=" . base_url() . "index.php/trading/business_edit_form/$thisbusiness[business_id]/province_id>Edit</a>";
+
+        echo ' </div>
+</div>';
+        echo '<div class="panel panel-default">
+<div class="panel-body">';
+        echo "Location : " . $thisbusiness['location'] . " <a href=" . base_url() . "index.php/trading/business_edit_form/$thisbusiness[business_id]/location>Edit</a>";
+
+
+        echo ' </div>
+</div>';
+        echo '<div class="panel panel-default">
+<div class="panel-body">';
+        echo "Fax : " . $thisbusiness['fax'] . " <a href=" . base_url() . "index.php/trading/business_edit_form/$thisbusiness[business_id]/fax>Edit</a>";
+
+
+        echo ' </div>
+</div>';
+        echo '<div class="panel panel-default">
+<div class="panel-body">';
+        echo "Email : " . $thisbusiness['email'] . " <a href=" . base_url() . "index.php/trading/business_edit_form/$thisbusiness[business_id]/email>Edit</a>";
+        echo ' </div>
+</div>';
+        
+        
+        
+        
+        
+        echo '<div class="panel panel-default">
+<div class="panel-body">';
+        echo "Created by <i>" . $thisbusiness['member_name'] . " " . $thisbusiness['member_surname'] . "</i>";
+        echo ' </div>
+</div>';
+    }
+}
+?>
+<?php
+
+echo '<nav>
+  <ul class="pager">';
+  
+
+echo "<li><a href=" . base_url() . "index.php/trading/get_my_businesses>Back</a></li>"; 
+
+ echo ' </ul>
+</nav>';
+?>

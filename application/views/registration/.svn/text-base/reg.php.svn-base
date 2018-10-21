@@ -1,0 +1,151 @@
+<div class="panel panel-default">
+    <div class="panel-heading"> 
+    
+Back to login page <a href="http://127.0.0.1/vtplatform_web/businesses/index.php/login">Login</a>
+
+
+    </div>
+</div>
+
+<?php
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+$a_fieldName = array("name" => 'fieldname', "type" => "hidden", "value" => $fieldName);
+$a_fieldID = array("name" => 'fieldid', "type" => "hidden", "value" => $fieldID);
+$a_userInput = array("name" => "userinput", "type" => "text", 'class' => 'form-control', 'placeholder' => 'Enter...');
+
+$attributes = array('class' => 'navbar-form navbar-left', 'role' => 'search');
+echo form_open("registration/tempStoreData",$attributes);
+
+switch ($fieldName) {
+
+    case "name":
+         echo '<div class="form-group">';
+        echo "Please enter your name:<br/><br/>";
+        echo form_input($a_userInput);
+            echo "</div>";
+        break;
+
+
+    case "surname":
+         echo '<div class="form-group">';
+        echo "Please enter your surname:<br/><br/>";
+
+        echo form_input($a_userInput);
+            echo "</div>";
+        break;
+
+
+    case "year_birth":
+         echo '<div class="form-group">';
+        echo "Please set your date of birth:<br/><br/>";
+
+        echo form_dropdown("userinput", yearRange(1980, 2000), 1988,'class="form-control"');
+    echo "</div>";
+
+        break;
+
+    case "month_birth":
+         echo '<div class="form-group">';
+        echo "Please set your date of birth:<br/><br/>";
+        echo form_dropdown("userinput", getMonths(),1,'class="form-control"');
+            echo "</div>";
+        break;
+
+
+    case "day_birth":
+         echo '<div class="form-group">';
+        echo "Please set your date of birth:<br/><br/>";
+        echo form_dropdown("userinput", getDays(),1,'class="form-control"');
+            echo "</div>";
+        break;
+
+
+
+    case "gender":
+         echo '<div class="form-group">';
+        echo "Please select your gender:<br/><br/>";
+        $gender = getGender();
+        echo form_dropdown("userinput", $gender, 0,'class="form-control"');
+            echo "</div>";
+        break;
+
+    case "country_id":
+         echo '<div class="form-group">';
+        echo "Please select your country:<br/><br/>";
+        $countries = getAllCountries();
+
+        $a_countries = array();
+
+        foreach ($countries as $country) {
+            $a_countries[$country['country_id']] = $country['country_name'];
+        }
+        echo form_dropdown("userinput", $a_countries, 101,'class="form-control"');
+            echo "</div>";
+        break;
+
+
+    case "province_id":
+         echo '<div class="form-group">';
+        echo "Please enter your province:<br/><br/>";
+
+        $provinces = getProvincesByCountryID(101);
+
+        $a_provinces = array();
+
+        foreach ($provinces as $province) {
+            $a_provinces[$province['province_id']] = $province['province_name'];
+        }
+
+        echo form_dropdown("userinput", $a_provinces, 1,'class="form-control"');
+    echo "</div>";
+        break;
+
+    case "location":
+         echo '<div class="form-group">';
+        echo "Please enter your location or physical address:<br/><br/>";
+        echo form_input($a_userInput);
+            echo "</div>";
+        break;
+
+    case "contact_no":
+ echo '<div class="form-group">';
+        echo "Please enter your contact number:<br/><br/>";
+        echo form_input($a_userInput);
+            echo "</div>";
+        break;
+
+    case "email":
+         echo '<div class="form-group">';
+        echo "Please enter your email:<br/><br/>";
+        echo form_input($a_userInput);
+    echo "</div>";
+        break;
+
+    case "password":
+         echo '<div class="form-group">';
+        echo "Please create your password:<br/><br/>";
+        echo form_input($a_userInput);
+    echo "</div>";
+        break;
+}
+
+
+
+
+
+echo form_input($a_fieldName);
+echo form_input($a_fieldID);
+
+   echo '<div class="form-group">';
+echo form_submit("sumbit", "send", 'class="btn btn-default"');
+  echo "</div>";
+echo form_close();
+
+?>
+

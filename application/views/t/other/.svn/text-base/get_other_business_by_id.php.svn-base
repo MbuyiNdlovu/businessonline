@@ -1,0 +1,117 @@
+<div class="panel panel-default">
+    <div class="panel-heading"><b><b>Business Details</b></b></div>
+</div>
+<?php
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+if ($thisbusiness) {
+
+    
+    
+            echo '<div class="panel panel-default">
+<div class="panel-body">';
+
+        echo "Name of business : " . $thisbusiness['business_name'];
+        
+        
+         
+        echo ' </div>
+</div>';
+    
+        
+                    echo '<div class="panel panel-default">
+<div class="panel-body">';
+
+         
+        echo "Country : " . $thisbusiness['country_name'];
+        
+        
+        echo ' </div>
+</div>';
+    
+        
+                    echo '<div class="panel panel-default">
+<div class="panel-body">';
+  echo "Province :  " . $thisbusiness['province_name'] ;
+       
+        
+         
+        echo ' </div>
+</div>';
+    
+        
+                    echo '<div class="panel panel-default">
+<div class="panel-body">';
+echo "Location : " . $thisbusiness['location'] ;
+        
+         
+        echo ' </div>
+</div>';
+    
+        
+                    echo '<div class="panel panel-default">
+<div class="panel-body">';
+ echo "Fax : " . $thisbusiness['fax'] ;
+       
+        
+         
+        echo ' </div>
+</div>';
+    
+        
+                    echo '<div class="panel panel-default">
+<div class="panel-body">';
+
+           
+        echo "Email : " . $thisbusiness['email'] ;
+        
+        echo ' </div>
+</div>';
+    
+  
+      
+        
+        
+     
+                
+                    echo '<div class="panel panel-default">
+<div class="panel-body">';
+echo "Created by <i>" . $thisbusiness['member_name'] . " " . $thisbusiness['member_surname'] . "</i>";
+  
+        
+        
+        
+        echo ' </div>
+</div>';
+    
+  
+                     
+                    echo '<div class="panel panel-default">
+<div class="panel-body">';
+ 
+                    
+                     echo "<b>Products or services</b> | ";
+        echo "<a href=".  base_url()."index.php/trading/get_other_business_productsservices/$thisbusiness[business_id]>view</a>";
+  
+        
+        
+        echo ' </div>
+</div>';
+    
+   
+    echo '<nav>
+  <ul class="pager">';
+    
+    echo '<li><a href=".  base_url()."index.php/trading/get_other_businesses>Back</a></li>';
+    
+    
+  echo '</ul>
+</nav>';    
+        
+       
+}
+?>
+ 

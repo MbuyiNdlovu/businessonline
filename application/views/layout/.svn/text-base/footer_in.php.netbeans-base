@@ -1,0 +1,22 @@
+<?php
+
+if(!isset($hidehomelink)){
+
+echo '<nav>
+  <ul class="pager">';
+    echo '<li><a href='.base_url().'index.php/home/index>Home</a></li>';
+    
+     echo '<li><a href='.base_url().'index.php/feedback/index>Hint us!</a></li>';
+    
+  echo '</ul>
+</nav>';
+}
+?>
+
+
+ <div class="panel-footer">Testing Phase. Please don't be bossy, but be supportive. This is massive.</div>
+
+</div>
+
+</body>
+</html>

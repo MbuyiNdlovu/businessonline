@@ -1,0 +1,70 @@
+<?php
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+if ($thread) {
+
+echo '<div class="panel panel-default">
+  <div class="panel-heading"> ';
+    echo "<b>" . $thread['thread_name'] . ' ' . $thread['thread_description'] . "</b>";
+echo '</div>
+</div>';
+
+    
+    
+ 
+    if ($thread['cus_id'] == $member_id) {
+        
+      echo '<div class="alert alert-info" role="alert">You are customer here</div>';
+        
+ 
+    } else if ($thread['sp_id'] == $member_id) {
+        
+        echo '<div class="alert alert-info" role="alert">You are service provider here.</div>';
+         
+    }
+ 
+
+    if ($chats) {
+        foreach ($chats as $c) {
+
+            
+               
+        echo '<div class="panel panel-default">
+<div class="panel-body">';
+           
+            if ($member_id == $c['member_id']) {
+                echo "<b>You :</b> ";
+            } else {
+                echo "<i>Not you :</i> ";
+            }
+            echo $c['message'];
+            
+            
+             echo ' </div>
+</div>';
+            
+            
+        }
+    }
+}
+ 
+
+echo '<nav>
+  <ul class="pager">';
+ echo "<li><a href=".  base_url()."index.php/productservice_thread/add_chat_form/$thread[id]>Chat..</a></li>";
+
+        echo '</ul>
+</nav>';
+
+
+
+
+
+?>
+
+
+ 

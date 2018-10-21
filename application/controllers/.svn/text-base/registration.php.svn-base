@@ -1,0 +1,141 @@
+<?php
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+class Registration extends CI_Controller {
+
+    public function __construct() {
+        parent::__construct();
+        $this->load->helper(array("form", "url", "registration"));
+        $this->load->library(array("session","user_agent"));
+
+        $this->load->model(array("memberdb"));
+    }
+
+    public function index($fieldID = 1) {
+
+        if ($this->isRegistered()) {
+
+            die("redirect to home page");
+        } else {
+
+            $regFields = RegFields();
+
+            $data['fieldName'] = $regFields[$fieldID];
+
+            $data['fieldID'] = $fieldID;
+
+            $data['provinces'] = getProvincesByCountryID(1);   //$this->provincesdb->get_provinces();
+
+            $this->bukaweb_layout_out("registration/reg", $data);
+        }
+    }
+
+    function tempStoreData() {
+
+        $regFields = RegFields();
+
+        $data = $this->input->post();
+
+        
+        if(strlen($data['userinput'])<1)
+        { $data['back'] = $this->agent->referrer();
+              redirect($data['back']);
+            
+        }
+       
+        $fieldID = $data['fieldid'];
+
+        if ($data['fieldname'] == 'email') {
+            if ($this->memberdb->emailExists($data['userinput'])) {
+                echo "That username is already used , please choose a different user name <a href=" . base_url() . "index.php/registration/index/$fieldID>Continue</a>";
+                die();
+            }
+        }
+        if ($data['fieldname'] == 'password') {
+
+            if ($this->checkPassword($data['userinput']) == true) {
+                echo $this->checkPassword($data['userinput']) . " <a href=" . base_url() . "index.php/registration/index/$fieldID>Back</a>";
+                die();
+            }
+        }
+
+
+        $this->session->set_userdata(array($data['fieldname'] => $data['userinput']));
+
+
+        $fieldID++;
+
+        if ($fieldID > sizeof($regFields)) {
+
+            redirect("registration/submitReg");
+        } else {
+
+            redirect("registration/index/$fieldID");
+        }
+    }
+
+    public function KeyValidate($fieldname) {
+        $regFields = RegFields();
+
+        $flag = false;
+
+        foreach ($regFields as $key => $value) {
+
+            if ($fieldname == $value) {
+
+                $flag = true;
+            }
+        }
+        return $flag;
+    }
+
+    public function isRegistered() {
+        return false;
+//return true;
+        //   $studentData = $this->studentdb->get_student($this->mxit_id);
+        // return !empty($studentData) ? true : false;
+    }
+
+    public function submitReg() {
+
+        $dataCaptured = $this->session->all_userdata();
+        $specificData = array();
+
+        foreach ($dataCaptured as $key => $value) {
+
+            if ($this->KeyValidate($key)) {
+
+                $specificData[$key] = $value;
+            }
+        }
+
+        $dob = $specificData['year_birth'] . '-' . $specificData['month_birth'] . '-' . $specificData['day_birth'];
+
+        $this->memberdb->AddMember($specificData['name'], $specificData['surname'], $dob, $specificData['gender'], $specificData['country_id'], $specificData['province_id'], $specificData['location'], $specificData['contact_no'],$specificData['email'],do_hash($specificData['password'], 'md5'));
+
+        $this->session->sess_destroy();
+
+        redirect("login/index");
+    }
+
+    public function checkPassword($pwd) {
+        if (strlen($pwd) < 8) {
+            return "Password too short!";
+        }
+
+        if (!preg_match("#[0-9]+#", $pwd)) {
+            return "Password must include at least one number!";
+        }
+
+        if (!preg_match("#[a-zA-Z]+#", $pwd)) {
+            return "Password must include at least one letter!";
+        }
+        return false;
+    }
+
+}

@@ -1,0 +1,1 @@
+Please email us the <b>quotation</b> together with the <b>proof of payment</b>. Your request will be processed within 24 hours.

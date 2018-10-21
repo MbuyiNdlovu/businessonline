@@ -1,0 +1,70 @@
+
+<div class="panel panel-default">
+    <div class="panel-heading"> 
+<b>Products or services</b> 
+         </div>
+</div>
+
+<?php
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+if ($businessproductsservices) {
+
+    foreach ($businessproductsservices as $bps) {
+        // print_r($bps);
+
+             echo '<div class="panel panel-default">
+<div class="panel-body">';
+    
+        echo $bps['productservice_name']. " . <a href=".  base_url()."index.php/trading/view_product_service/$business_id/$bps[productservice_id]>view</a>";
+   
+        
+    
+echo ' </div>
+</div>';
+
+        
+        
+        }
+} else {
+    
+             echo '<div class="panel panel-default">
+<div class="panel-body">';
+    
+    echo "You have not added any products or services.";
+
+echo ' </div>
+</div>';
+
+    
+    
+    
+    
+    
+
+
+
+}
+
+  
+echo '<nav>
+  <ul class="pager">';
+   echo "<li><a href=".  base_url()."index.php/trading/productservice_create_form/$business_id>Create Product/Services</a></li>";      
+     
+echo '</ul>
+</nav>';
+
+
+
+
+echo '<nav>
+  <ul class="pager">';
+echo "<li><a href=".  base_url()."index.php/trading/get_business_by_id/$business_id>Back</a></li>";
+
+echo '</ul>
+</nav>';
+
+?>

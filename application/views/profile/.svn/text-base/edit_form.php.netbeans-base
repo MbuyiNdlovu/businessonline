@@ -1,0 +1,109 @@
+
+
+<div class="panel panel-default">
+    <div class="panel-heading"> 
+        <b>Update your profile</b>
+
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<?php
+//variables
+$table_field = array('name' => 'field', 'type' => 'hidden', 'value' => $field);
+
+$attributes = array('class' => 'navbar-form navbar-left', 'role' => 'search');
+
+echo form_open('profile/update_profile', $attributes);
+
+switch ($field) {
+
+    case "country_id":
+        echo '<div class="form-group">';
+
+        echo "Please select your country:";
+        $countries = getAllCountries();
+
+        $a_countries = array();
+
+        foreach ($countries as $country) {
+            $a_countries[$country['country_id']] = $country['country_name'];
+        }
+        echo form_dropdown("newtext", $a_countries, 101, 'class="form-control"');
+
+
+        echo "</div>";
+        break;
+
+    case "province_id":
+
+        echo '<div class="form-group">';
+
+        echo "Please enter your province:";
+        $provinces = getProvincesByCountryID(101);
+        $a_provinces = array();
+
+        foreach ($provinces as $province) {
+            $a_provinces[$province['province_id']] = $province['province_name'];
+        }
+
+        echo form_dropdown("newtext", $a_provinces, 1, 'class="form-control"');
+        echo "</div>";
+        break;
+    case "gender":
+        echo '<div class="form-group">';
+
+
+        $a_gender = getGender();
+        echo form_dropdown("newtext", $a_gender, 1, 'class="form-control"');
+        echo "</div>";
+
+        break;
+
+    case "dob":
+
+        echo '<div class="form-group">';
+        echo form_dropdown("newtext_year", yearRange(1980, 2000), 1988, 'class="form-control"');
+        echo form_dropdown("newtext_month", getMonths(), 1, 'class="form-control"');
+        echo form_dropdown("newtext_day", getDays(), 1, 'class="form-control"');
+        echo "</div>";
+        break;
+
+
+    case "password":
+        echo '<div class="form-group">';
+        $new_text = array('name' => 'newtext', 'type' => 'password', 'class' => 'form-control', 'placeholder' => 'Enter...');
+        echo form_input($new_text);
+        echo '</div>';
+
+        break;
+
+
+    default:
+
+        echo '<div class="form-group">';
+        $new_text = array('name' => 'newtext', 'type' => 'text', 'class' => 'form-control', 'placeholder' => 'Enter...');
+        echo form_input($new_text);
+        echo '</div>';
+        break;
+}
+
+echo form_input($table_field);
+echo form_submit("submit", "send", 'class="btn btn-default"');
+
+echo '<nav>
+  <ul class="pager">
+    <li><a href="' . $back . '">Back</a></li>
+  </ul>
+</nav>';
+
+echo form_close();
+?>
+  

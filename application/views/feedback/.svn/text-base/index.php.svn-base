@@ -1,0 +1,26 @@
+
+<div class="panel panel-default">
+    <div class="panel-heading">Please hint us what is it that we can do to improve VT services.</div>
+</div>
+
+<?php
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+$attributes = array('class' => 'navbar-form navbar-left', 'role' => 'search');
+echo '<div class="form-group">';
+echo form_open("feedback/send",$attributes);
+$page = array("name"=>"page_url","type"=>"hidden","value"=>$previous_page);
+echo form_input($page);
+$comments = array("name"=>"comments","type"=>"text" , 'class' => 'form-control', 'placeholder' => 'Your feedback here...');
+echo form_input($comments);
+
+echo form_submit("Submit","Send",  'class="btn btn-default"');
+echo form_close();
+
+        echo "</div>";
+
+?>

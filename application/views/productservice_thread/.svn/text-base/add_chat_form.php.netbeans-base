@@ -1,0 +1,20 @@
+<?php
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+$attributes = array('class' => 'navbar-form navbar-left', 'role' => 'search');
+
+echo form_open("/productservice_thread/add_chat",$attributes);
+echo form_input(array("name" => "thread_id", "type" => "hidden", "value" => $thread_id));
+
+echo  '<div class="form-group">';
+echo form_label("Chat message : ");
+echo form_input(array("name" => "message", "type" => "text",'class'=>'form-control','placeholder'=>'Enter...'));
+echo '</div>';
+
+echo form_submit("submit", "send",'class="btn btn-default"');
+echo form_close();
+?>

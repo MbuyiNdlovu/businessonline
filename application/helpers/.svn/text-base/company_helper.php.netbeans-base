@@ -1,0 +1,39 @@
+<?php
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+if (!function_exists("getAllCompanies")) {
+
+    function getAllCompanies() {
+        
+       $CI_inst = &get_instance();
+
+        $CI_inst->load->model("companydb");
+
+      $companies = $CI_inst->companydb->getCompanies();
+
+       return $companies;
+
+    
+    }
+
+}
+
+
+if (!function_exists("getCompanyByID")) {
+
+    function getCompanyByID($companyID) {
+        $CI_inst = &get_instance();
+
+       $CI_inst->load->model("companydb");
+
+       $company = $CI_inst->companydb->getCompany($companyID);
+
+        return $company;
+   
+    }
+}
+?>

@@ -1,0 +1,56 @@
+<?php
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+class productservice_threaddb extends CI_Model {
+
+    public function __construct() {
+        parent::__construct();
+        $this->load->database();
+    }
+
+    public function add_thread($thread_name, $thread_description, $productservice_id, $sp_id, $cus_id) {
+        $data = array("thread_name" => $thread_name, "thread_description" => $thread_description,
+            "productservice_id" => $productservice_id, "sp_id" => $sp_id, "cus_id" => $cus_id, "date_added" => date("Y-m-d H:i:s"), "status" => 1);
+        $this->db->insert("productservice_thread", $data);
+    }
+
+    public function get_thread($member_id, $productservice_id) {
+
+        $data = array("id", "thread_name", "thread_description", "productservice_id", "sp_id", "cus_id", "date_added", "status");
+        $where_sp = array("sp_id" => $member_id, "productservice_id" => $productservice_id);
+        $query_sp = $this->db->where($where_sp)->select($data)->get("productservice_thread");
+        $where_cus = array("cus_id" => $member_id, "productservice_id" => $productservice_id);
+        $query_cus = $this->db->where($where_cus)->select($data)->get("productservice_thread");
+
+        if (sizeof($query_sp->result_array()) > 0) {
+            return $query_sp->result_array();
+        } else
+        if (sizeof($query_cus->result_array()) > 0) {
+            return $query_cus->result_array();
+        } else {
+            return false;
+        }
+    }
+
+    public function open_the_thread($member_id, $thread_id) {
+        $data = array("id", "thread_name", "thread_description", "productservice_id", "sp_id", "cus_id", "date_added", "status");
+        $where_sp = array("sp_id" => $member_id, "id" => $thread_id);
+        $query_sp = $this->db->where($where_sp)->select($data)->get("productservice_thread");
+        $where_cus = array("cus_id" => $member_id, "id" => $thread_id);
+        $query_cus = $this->db->where($where_cus)->select($data)->get("productservice_thread");
+
+        if (sizeof($query_sp->row_array()) > 0) {
+            return $query_sp->row_array();
+        } else
+        if (sizeof($query_cus->row_array()) > 0) {
+            return $query_cus->row_array();
+        } else {
+            return false();
+        }
+    }
+
+}

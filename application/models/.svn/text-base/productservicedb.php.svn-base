@@ -1,0 +1,43 @@
+<?php
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+class productservicedb extends CI_Model {
+
+    public function __construct() {
+        parent::__construct();
+        $this->load->database();
+    }
+
+    public function add_productservice($name, $description, $code, $business_id, $member_id) {
+        $data = array("productservice_name" => $name, "productservice_description" => $description, "productservice_code" => $code, "business_id" => $business_id, "member_id" => $member_id, "date_added" => date("Y-m-d"));
+        $this->db->insert("productservice", $data);
+    }
+
+    public function get_productservice_by_business_id($business_id) {
+        $sql = "select productservice.productservice_id,productservice.productservice_name,
+                productservice.productservice_description,productservice.productservice_code,productservice.business_id,productservice.member_id,
+                 business.business_name,business.location,business.contact_no,business.fax,business.email
+                from productservice left join business on (business.business_id = productservice.business_id) left join member on (member.member_id = productservice.member_id) where productservice.business_id = $business_id";
+        $query = $this->db->query($sql);
+        return !empty($query) ? $query->result_array() : false;
+    }
+
+    public function get_productservice__product_id_business_id($business_id, $productservice_id) {
+        $sql = "select productservice.productservice_id,productservice.productservice_name,
+                productservice.productservice_description,productservice.productservice_code,productservice.price,productservice.business_id,productservice.member_id,
+                business.business_name,business.location,business.contact_no,business.fax,business.email
+                from productservice left join business on (business.business_id = productservice.business_id) left join member on (member.member_id = productservice.member_id) where (productservice.productservice_id=$productservice_id and productservice.business_id = $business_id)";
+        $query = $this->db->query($sql);
+        return !empty($query) ? $query->row_array() : false;
+    }
+
+    public function update_productservice($business_id, $productservice_id, $member_id, $fieldname, $new_input) {
+        $data = array($fieldname => $new_input);
+        $where = array("business_id" => $business_id, "productservice_id" => $productservice_id, "member_id" => $member_id);
+        $this->db->where($where)->update("productservice", $data);
+    }
+}

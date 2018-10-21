@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <h4 class="text-center login-title">Welcome to Visual Trait Business Version.</h4>
+            <div class="account-wall">
+                <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=50"
+                     alt="">
+                     <?php
+                     $email = array('name' => 'email', 'type' => 'text', 'class' => "form-control", 'placeholder' => "Email");
+                     $password = array('name' => 'password', 'type' => 'password', 'class' => "form-control");
+
+                     $attributes = array('class="form-signin"');
+
+                     echo form_open('login/check_credentials', $attributes);
+
+                     echo form_label('Email');
+                     echo '<br/>';
+                     echo form_input($email);
+
+                     echo '<br/>';
+
+                     echo form_label('Password');
+                     echo '<br/>';
+                     echo form_input($password, "required autofocus");
+                     echo '<br/>';
+                     echo form_submit('submit', 'Send', 'class="btn btn-lg btn-primary btn-block"');
+                     echo '<span class="clearfix"></span>';
+                     echo form_close();
+                     ?>
+
+                <?php
+                echo "</div>
+                        <a href=" . base_url() . "index.php/registration>Create an account </a>";
+                            
+
+
+echo '<a href="#" class="pull-right need-help">Need help? </a>';
+                    echo  '</div>';
+                ?>
+
+            </div>
+        </div>

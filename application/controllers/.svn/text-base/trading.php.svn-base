@@ -1,0 +1,206 @@
+<?php
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+class Trading extends CI_Controller {
+
+    public function __construct() {
+        parent::__construct();
+
+        $this->load->model(array("businessdb"));
+
+        $this->load->model("productservicedb");
+
+        $this->load->library(array('session', 'userlib', 'user_agent'));
+        $this->load->helper(array('form', 'url', 'security'));
+        $this->load->model(array('memberdb'));
+
+        $this->membersession = $this->session->all_userdata();
+        $membersession = $this->membersession;
+        $this->userlib->getUser($membersession['email'], $membersession['password']);
+
+        if ($this->userlib->id == false) {
+            redirect("login");
+        }
+
+
+        $this->userdata = $this->session->all_userdata();
+    }
+
+    public function index() {
+
+        $data = array();
+        $data['onlineuser_data'] = $this->userdata;
+        
+        $this->bukaweb_layout("trading/index", $data);
+    }
+
+    public function get_my_businesses($start = 1) {
+        $data['mybusinesses'] = array();
+        $cnt = 0;
+
+        foreach ($this->businessdb->get_businesses_by_member_id($this->userlib->id) as $mb) {
+
+            $cnt++;
+
+            if (($cnt >= $start) && ($cnt < $start + 3)) {
+
+                $data['mybusinesses'][] = $mb;
+            }
+        }
+
+
+        $data['start'] = $start;
+        $data['onlineuser_data'] = $this->userdata;
+        $this->bukaweb_layout("trading/get_my_businesses", $data);
+    }
+
+    public function get_business_by_id($business_id) {
+        $data['thisbusiness'] = $this->businessdb->get_business($business_id);
+        $data['onlineuser_data'] = $this->userdata;
+
+        $data['member_id'] = $this->userlib->id;
+
+        $this->bukaweb_layout("trading/get_business_by_id", $data);
+    }
+
+    public function business_edit_form($business_id, $fieldname) {
+        $data['business_id'] = $business_id;
+        $data['fieldname'] = $fieldname;
+
+        $this->bukaweb_layout("trading/business_edit_form", $data);
+    }
+
+    public function productservice_edit_form($business_id, $productservie_id, $fieldname) {
+        $data['back'] = $this->agent->referrer();
+        $data['business_id'] = $business_id;
+        $data['fieldname'] = $fieldname;
+        $data['productservie_id'] = $productservie_id;
+        $this->bukaweb_layout("trading/productservice_edit_form", $data);
+    }
+
+    public function business_create_form() {
+        $data['onlineuser_data'] = $this->userdata;
+        $this->bukaweb_layout("trading/business_create_form", $data);
+    }
+
+    public function submit_create_business() {
+
+        $data = $this->input->post();
+        $this->businessdb->add_business($data['businessname'], $data['country_id'], $data['province_id'], $data['location'], $data['contact_no'], $data['fax'], $data['email'], $this->userlib->id);
+        redirect("/trading/get_my_businesses");
+    }
+
+    public function get_business_productsservices($business_id) {
+        $data['businessproductsservices'] = $this->productservicedb->get_productservice_by_business_id($business_id);
+        $data['business_id'] = $business_id;
+        $this->bukaweb_layout("trading/get_business_productsservices", $data);
+    }
+
+    public function productservice_create_form($business_id) {
+        $data['onlineuser_data'] = $this->userdata;
+        $data['business_id'] = $business_id;
+        $this->bukaweb_layout("trading/productservice_create_form", $data);
+    }
+
+    public function submit_create_productservice() {
+
+        $data = $this->input->post();
+
+        $this->productservicedb->add_productservice($data['productsevicename'], $data['productsevicedescription'], $data['productsevicecode'], $data['business_id'], $this->userlib->id);
+
+        redirect("/trading/get_business_by_id/$data[business_id]");
+    }
+
+    public function update_business() {
+        $data = $this->input->post();
+        $this->businessdb->update_business($data['business_id'], $this->userlib->id, $data['fieldname'], $data['new_input']);
+        redirect("/trading/get_business_by_id/$data[business_id]");
+    }
+
+    public function view_product_service($business_id, $productservice_id) {
+        $data['back'] = $this->agent->referrer();
+        $this->load->model(array("productservice_threaddb", "productservice_threadchatsdb"));
+
+        $thread = $this->productservice_threaddb->get_thread($this->userlib->id, $productservice_id);
+        $data['connection_started'] = false;
+
+        if ($thread) {
+            $data['connection_started'] = true;
+        }
+
+        $data['product_service'] = $this->productservicedb->get_productservice__product_id_business_id($business_id, $productservice_id);
+
+        $this->bukaweb_layout("trading/view_product_service", $data);
+    }
+
+    public function product_service_edit_form($business_id, $productservice_id, $fieldname) {
+        $data['back'] = $this->agent->referrer();
+        $data['business_id'] = $business_id;
+        $data['productservice_id'] = $productservice_id;
+        $data['fieldname'] = $fieldname;
+
+        $this->bukaweb_layout("trading/product_service_edit_form", $data);
+    }
+
+    public function update_product_service() {
+        $data = $this->input->post();
+        $this->productservicedb->update_productservice($data['business_id'], $data['productservice_id'], $this->userlib->id, $data['fieldname'], $data['new_input']);
+        redirect("trading/view_product_service/$data[business_id]/$data[productservice_id]");
+    }
+
+    public function get_other_businesses($start=1) {
+        $data = $this->input->post();
+        $data['otherbusinesses'] = array();
+        $cnt = 0;
+
+        foreach ($this->businessdb->get_other_businesses($this->userlib->id) as $ob) {
+            $cnt++;
+            if (($cnt >= $start) && ($cnt < $start + 3)) {
+
+                $data['otherbusinesses'][] = $ob;
+            }
+        }
+
+        $data['start'] = $start;
+
+        $this->bukaweb_layout("trading/other/get_other_businesses", $data);
+    }
+
+    public function get_other_business_by_id($business_id) {
+        $data['thisbusiness'] = $this->businessdb->get_business($business_id);
+        $data['onlineuser_data'] = $this->userdata;
+
+        $data['member_id'] = $this->userlib->id;
+
+        $this->bukaweb_layout("trading/other/get_other_business_by_id", $data);
+    }
+
+    public function get_other_business_productsservices($business_id) {
+        $data['businessproductsservices'] = $this->productservicedb->get_productservice_by_business_id($business_id);
+        $data['business_id'] = $business_id;
+        $this->bukaweb_layout("trading/other/get_other_business_productsservices", $data);
+    }
+
+    public function view_other_product_service($business_id, $productservice_id) {
+        $data['back'] = $this->agent->referrer();
+        $data['product_service'] = $this->productservicedb->get_productservice__product_id_business_id($business_id, $productservice_id);
+
+        $this->load->model(array("productservice_threaddb", "productservice_threadchatsdb"));
+
+        $thread = $this->productservice_threaddb->get_thread($this->userlib->id, $productservice_id);
+
+        $data['connection_started'] = false;
+        if ($thread) {
+            $data['connection_started'] = true;
+        }
+
+        $this->bukaweb_layout("trading/other/view_other_product_service", $data);
+    }
+
+}
+
+?>

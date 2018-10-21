@@ -1,0 +1,35 @@
+<?php
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+class Advertisement extends CI_Controller {
+    public function __construct() {
+        parent::__construct();
+        $this->load->library(array('session', 'userlib', 'user_agent'));
+        $this->membersession = $this->session->all_userdata();
+        $membersession = $this->membersession;
+        $this->userlib->getUser($membersession['email'], $membersession['password']);
+
+        if ($this->userlib->id == false) {
+            redirect("login");
+        }
+    }
+
+    public function index() {
+        $data['name'] = $this->userlib->name;
+        $data['surname'] = $this->userlib->surname;
+        $data['dob'] = $this->userlib->dob;
+        $data['gender'] = $this->userlib->gender;
+        $data['location'] = $this->userlib->location;
+        $data['country_name'] = $this->userlib->country_name;
+        $data['province_name'] = $this->userlib->province_name;
+        $data['contact_no'] = $this->userlib->contact_no;
+        $data['email'] = $this->userlib->email;
+
+        $this->bukaweb_layout("advertisement/index", $data);
+    }
+}
+?>

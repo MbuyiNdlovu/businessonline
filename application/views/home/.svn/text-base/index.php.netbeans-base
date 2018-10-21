@@ -1,0 +1,24 @@
+
+
+
+<?php
+
+
+echo '<div class="panel panel-default">
+  <div class="panel-heading">';
+echo "<b>" . $name . "</b>@" . $country_name . " / " . $province_name . " / " . $location;
+   
+
+echo '</div>
+</div>';
+echo "<ul class=nav nav-pills>
+  <li role=presentation class=active><a href=" . base_url() . "index.php/profile>Profile</a></li>
+ 
+  <li role=presentation><a href=" . base_url() . "index.php/trading>Trading</a></li>
+  <li role=presentation><a href=" . base_url() . "index.php/advertisement>Advert</a></li>
+  <li role=presentation><a href=" . base_url() . "index.php/login/logout>Logout</a></li>
+</ul>";
+?>
+
+
+

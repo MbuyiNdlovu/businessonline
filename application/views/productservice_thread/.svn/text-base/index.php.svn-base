@@ -1,0 +1,43 @@
+ 
+
+<div class="panel panel-default">
+  <div class="panel-heading"> 
+<b>Conversations started about a product or service :</b><br/><br/>
+
+
+</div>
+</div>
+
+<?php
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+if ($thread) {
+ 
+    foreach($thread as $t)
+    {
+        
+        echo '<div class="panel panel-default">
+<div class="panel-body">';
+           echo $t['thread_name'].' '.$t['thread_description']." <a href=".  base_url()."index.php/productservice_thread/open_the_thread/$t[id]>view</a>";
+      
+ echo ' </div>
+</div>';
+        
+     
+    }
+    
+    
+} else {
+    
+    echo '<div class="alert alert-warning" role="alert">';
+      echo "That thread is not active.";  
+    echo '</div>';
+    
+
+}
+?>
+<br/>

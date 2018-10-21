@@ -1,0 +1,88 @@
+
+<div class="panel panel-default">
+    <div class="panel-heading"> 
+<b>Products or services  details.</b>
+ 
+        
+         </div>
+</div>
+
+<?php
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+if ($product_service) {
+
+ 
+        echo '<div class="panel panel-default">
+<div class="panel-body">';
+    echo "Name : " . $product_service['productservice_name'] . " . <a href=" . base_url() . "index.php/trading/product_service_edit_form/$product_service[business_id]/$product_service[productservice_id]/productservice_name>edit</a>";
+ 
+    
+echo ' </div>
+</div>';
+
+       echo '<div class="panel panel-default">
+<div class="panel-body">';
+           echo "Description : " . $product_service['productservice_description'] . " . <a href=" . base_url() . "index.php/trading/product_service_edit_form/$product_service[business_id]/$product_service[productservice_id]/productservice_description>edit</a>";
+ 
+ 
+echo ' </div>
+</div>';
+    
+
+       echo '<div class="panel panel-default">
+<div class="panel-body">';
+  echo "Code : " . $product_service['productservice_code'] . " . <a href=" . base_url() . "index.php/trading/product_service_edit_form/$product_service[business_id]/$product_service[productservice_id]/productservice_code>edit</a>";
+
+   
+echo ' </div>
+</div>';
+    
+
+       echo '<div class="panel panel-default">
+<div class="panel-body">';
+  echo "Price : ";
+
+    if (strlen($product_service['price']) < 1) {
+        echo "<font color='red'>-please update asap-</font>";
+    } else {
+        echo $product_service['price'];
+    }
+
+    echo " <a href=" . base_url() . "index.php/trading/product_service_edit_form/$product_service[business_id]/$product_service[productservice_id]/price>edit</a>";
+echo ' </div>
+</div>';
+
+
+
+    if ($connection_started) {
+        
+        echo '<nav>
+  <ul class="pager">';
+        
+        
+    echo "<li><a href=" . base_url() . "index.php/productservice_thread/index/$product_service[productservice_id]>Preview</a></li>";
+        
+        echo ' </ul>
+</nav>';
+        
+       
+    }
+} else {
+    echo "Opps. Something must have been changed.";
+}
+
+
+      echo '<nav>
+  <ul class="pager">';
+        
+        
+echo "<li><a href=$back>Back</a></li>";
+        echo ' </ul>
+</nav>';
+        
+
+
+?>

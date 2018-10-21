@@ -1,0 +1,89 @@
+<?php
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+class productservice_thread extends CI_Controller {
+
+    public function __construct() {
+
+        parent::__construct();
+
+        $this->load->library(array('session', 'userlib'));
+
+        $this->membersession = $this->session->all_userdata();
+
+        $membersession = $this->membersession;
+
+        $this->userlib->getUser($membersession['email'], $membersession['password']);
+
+        if ($this->userlib->id == false) {
+            redirect("login");
+        }
+
+        $this->load->model(array("productservice_threaddb", "productservice_threadchatsdb"));
+        $this->load->helper(array("form","url"));
+    }
+
+    public function index($productservice_id) {
+        //thread      
+        $thread = $this->productservice_threaddb->get_thread($this->userlib->id, $productservice_id);
+
+        $data['thread'] = $thread;
+
+        // if ($thread) {
+        //    $data['chats'] = $this->productservice_threadchatsdb->get_chats($thread['id']);
+        //      //chats 
+        //  }
+
+        $this->bukaweb_layout("productservice_thread/index", $data);
+    }
+
+    public function add_thread_form($sp_id, $productservice_id) {
+        $data['sp_id'] = $sp_id;
+        $data['productservice_id'] = $productservice_id;
+        $this->bukaweb_layout("productservice_thread/add_thread_form", $data);
+    }
+
+    public function add_thread() {
+        $data = $this->input->post();
+        $this->productservice_threaddb->add_thread($data['thread_name'], $data['thread_description'], $data['productservice_id'], $data['sp_id'], $this->userlib->id);
+    
+        
+        redirect("productservice_thread/request_has_been_sent");
+    }
+
+    public function add_chat_form($thread_id) {
+        $data['thread_id'] = $thread_id;
+        $this->bukaweb_layout("productservice_thread/add_chat_form", $data);
+    }
+
+    public function add_chat() {
+        $data = $this->input->post();
+        $this->productservice_threadchatsdb->add_chat($data['thread_id'], $this->userlib->id, $data['message']);
+        redirect("/productservice_thread/open_the_thread/$data[thread_id]");
+        }
+
+    public function open_the_thread($thread_id) {
+        $data['member_id'] = $this->userlib->id ;
+        $thread = $this->productservice_threaddb->open_the_thread($this->userlib->id, $thread_id);
+       
+        
+        $data['thread'] = $thread;
+        if ($thread) {
+            $data['chats'] = $this->productservice_threadchatsdb->get_chats($thread['id']);
+            //chats 
+        }
+        $this->bukaweb_layout("productservice_thread/open_the_thread", $data);
+    }
+    
+    public function request_has_been_sent()
+    {
+         $this->bukaweb_layout("productservice_thread/request_has_been_sent");
+    }
+
+}
+
+?>

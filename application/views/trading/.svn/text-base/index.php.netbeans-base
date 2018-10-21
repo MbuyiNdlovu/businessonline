@@ -1,0 +1,23 @@
+<div class="panel panel-default">
+    <div class="panel-heading"><b>Select from categories</b></div>
+</div>
+<?php
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+//if ($onlineuser_data['email'] == "mbuyi@gmail.com") {
+echo '<div class="panel panel-default">
+<div class="panel-body">';
+echo "<a href=" . base_url() . "index.php/trading/get_my_businesses>Own Businesses</a>";
+echo ' </div>
+</div>';
+//} else {
+echo '<div class="panel panel-default">
+<div class="panel-body">';
+
+echo "<a href=" . base_url() . "index.php/trading/get_other_businesses>Other Businesses</a>";
+echo ' </div>
+</div>';
+//}
+?>

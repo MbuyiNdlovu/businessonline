@@ -1,0 +1,59 @@
+<?php
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+if(!function_exists("getAllCountries"))
+{
+    
+    function getAllCountries()
+    {
+        
+        $CI_Ins = &get_instance();
+
+        $CI_Ins->load->model(array("countrydb"));
+
+        $countries = $CI_Ins->countrydb->getCountries();
+
+        return $countries;
+        
+    }
+    
+}
+
+if(!function_exists("allcountries"))
+{
+    
+    function allcountries()
+    {
+        
+        $CI_Ins = &get_instance();
+
+        $CI_Ins->load->model(array("countrydb"));
+
+        $countries = $CI_Ins->countrydb->allcountries();
+
+        return $countries;
+        
+    }
+    
+}
+
+if(!function_exists("getCountryByID"))
+{ 
+    function getCountryByID($countryID)
+    {           
+        $CI_Ins = &get_instance();
+
+        $CI_Ins->load->model(array("countrydb"));
+
+        $country = $CI_Ins->countrydb->getCountry($countryID);
+
+        return $country;
+        
+    }
+}
+?>

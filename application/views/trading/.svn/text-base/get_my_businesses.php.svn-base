@@ -1,0 +1,58 @@
+<div class="panel panel-default">
+    <div class="panel-heading"><b><b>Your Online Shop(s)</b></b></div>
+</div>
+
+<?php
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+if ($mybusinesses) {
+
+    $i = 0;
+    foreach ($mybusinesses as $mybusiness) {
+        $i++;
+
+
+        echo '<div class="panel panel-default">
+<div class="panel-body">';
+
+        echo " $i <a href=" . base_url() . "index.php/trading/get_business_by_id/$mybusiness[business_id]>" . $mybusiness['business_name'] . "</a>";
+
+        echo ' </div>
+</div>';
+    }
+}
+
+
+
+echo '<nav>
+  <ul class="pager">';
+
+echo "<li><a href=" . base_url() . "index.php/trading/business_create_form>Create more</a></li>";
+
+echo '</ul>
+</nav>';
+
+$next = $start + 3;
+$previous = $start - 3;
+
+echo '<nav>
+  <ul class="pager">';
+
+
+
+
+
+
+echo "<li><a href=" . base_url() . "index.php/trading/get_my_businesses/$next>Go Next</a></li>";
+if ($previous < 0) {
+    $previous = 1;
+} else {
+    echo "<li> <a href=" . base_url() . "index.php/trading/get_my_businesses/$previous>Go Previous</a></li>";
+}
+
+echo '</ul>
+</nav>';
+?>

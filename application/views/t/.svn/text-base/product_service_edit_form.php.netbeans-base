@@ -1,0 +1,92 @@
+
+<div class="panel panel-default">
+    <div class="panel-heading"> 
+        <b>You are about to edit product or service detail.</b>
+
+
+
+    </div>
+</div>
+
+<?php
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+echo '<div class="panel panel-default">
+<div class="panel-body">';
+
+
+switch ($fieldname) {
+
+    case 'productservice_name':
+        echo "Enter new name below";
+        break;
+    case 'productservice_description':
+        echo "Enter new description below";
+        break;
+
+    case 'productservice_code':
+
+        echo "Enter new code below";
+        break;
+
+    case 'price':
+
+        echo "Enter new price below";
+        break;
+
+    default :
+
+        echo die("Opps. Something went wrong.");
+}
+
+
+echo ' </div>
+</div>';
+
+$attributes = array('class' => 'navbar-form navbar-left', 'role' => 'search');
+
+echo form_open("/trading/update_product_service", $attributes);
+
+
+echo form_input(array("name" => "business_id", "type" => "hidden", "value" => $business_id));
+
+
+
+
+
+echo form_input(array("name" => "productservice_id", "type" => "hidden", "value" => $productservice_id));
+
+
+echo form_input(array("name" => "fieldname", "type" => "hidden", "value" => $fieldname));
+
+
+echo '<div class="form-group">';
+echo form_input(array("name" => "new_input", "type" => "text", 'class' => 'form-control', 'placeholder' => 'Enter...'));
+echo '</div>';
+
+
+echo '<div class="form-group">';
+
+
+
+echo form_submit("submit", "send", 'class="btn btn-default"');
+echo '</div>';
+
+echo form_close();
+
+echo '<div class="panel panel-default">
+<div class="panel-body">';
+echo ' </div>
+</div>';
+
+
+echo '<nav>
+  <ul class="pager">';
+echo "<li><a href=$back>Back</a></li>";
+
+echo '</ul>
+</nav>';
+?>

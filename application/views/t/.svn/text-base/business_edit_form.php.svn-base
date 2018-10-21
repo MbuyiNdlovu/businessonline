@@ -1,0 +1,50 @@
+<?php
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+if ($business_id && $fieldname) {
+    
+    $attributes = array('class' => 'navbar-form navbar-left', 'role' => 'search');
+
+
+    
+    echo form_open("/trading/update_business",$attributes);
+    switch ($fieldname) {
+
+        case 'province_id':
+
+            $provinces = getProvincesByCountryID(101);
+
+            $a_provinces = array();
+
+            foreach ($provinces as $province) {
+                $a_provinces[$province['province_id']] = $province['province_name'];
+            }
+
+            echo form_dropdown("new_input", $a_provinces,1,'class="form-control"');
+            break;
+
+        default : 
+            
+            echo  '<div class="form-group">';
+            
+            echo form_label("Enter new text:<br/>");
+            echo form_input(array("name" => "new_input", "type" => "text",'class'=>'form-control','placeholder'=>'Enter...'));
+   
+            
+              echo '</div>';
+            
+            }
+
+
+    echo form_input(array("name" => "business_id", "type" => "hidden", "value" => $business_id));
+    echo form_input(array("name" => "fieldname", "type" => "hidden", "value" => $fieldname));
+
+    echo form_submit("submit", "send",'class="btn btn-default"');
+
+    echo form_close();
+}
+?>

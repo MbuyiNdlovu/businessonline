@@ -1,0 +1,83 @@
+<?php
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+$attributes = array('class' => 'navbar-form navbar-left', 'role' => 'search');
+
+
+echo form_open("/trading/submit_create_business",$attributes);
+
+
+echo  '<div class="form-group">';
+
+echo form_label("What would you like your business to be called on this platform?<br/>");
+echo form_input(array("name" => "businessname", "type" => "text",'class'=>'form-control','placeholder'=>'Enter...'));
+echo '</div>';
+
+
+echo  '<div class="form-group">';
+
+echo form_label("Please select country in which your business is located :<br/>");
+$countries = getAllCountries();
+
+$a_countries = array();
+
+foreach ($countries as $country) {
+    $a_countries[$country['country_id']] = $country['country_name'];
+}
+echo form_dropdown("country_id", $a_countries, 101,'class="form-control"');
+echo '</div>';
+
+echo  '<div class="form-group">';
+echo form_label("Please enter province in which your business is located:<br/>");
+
+$provinces = getProvincesByCountryID(101);
+
+$a_provinces = array();
+
+foreach ($provinces as $province) {
+    $a_provinces[$province['province_id']] = $province['province_name'];
+}
+
+
+
+echo form_dropdown("province_id", $a_provinces,1,'class="form-control"');
+echo '</div>';
+
+echo  '<div class="form-group">';
+echo form_label("Enter your location:<br/>");
+echo form_input(array("name" => "location", "type" => "text",'class'=>'form-control','placeholder'=>'Enter...'));
+echo '</div>';
+
+echo  '<div class="form-group">';
+echo form_label("Enter your contact number:<br/>");
+echo form_input(array("name" => "contact_no", "type" => "text",'class'=>'form-control','placeholder'=>'Enter...'));
+echo '</div>';
+
+echo  '<div class="form-group">';
+echo form_label("Please enter your fax number:<br/>");
+echo form_input(array("name" => "fax", "type" => "text",'class'=>'form-control','placeholder'=>'Enter...'));
+echo '</div>';
+
+echo  '<div class="form-group">';
+echo form_label("Please enter your email address:<br/>");
+echo form_input(array("name" => "email", "type" => "text",'class'=>'form-control','placeholder'=>'Enter...'));
+echo '</div>';
+
+echo form_submit("submit", "send",'class="btn btn-default"');
+echo form_close();
+
+
+echo '<nav>
+  <ul class="pager">
+    <li><a href="/index.php/trading/get_my_businesses">Back</a></li>
+  </ul>
+</nav>';
+
+
+?>
+

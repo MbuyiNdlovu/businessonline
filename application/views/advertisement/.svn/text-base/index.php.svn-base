@@ -1,0 +1,43 @@
+
+<div class="panel panel-default">
+    <div class="panel-heading"><b>Adverts (Ads)</b></div>
+</div>
+
+<?php
+echo '<div class="panel panel-default">
+<div class="panel-body">';
+echo "Welcome to adverts <b> " . $name . "</b> and enjoy looking at offerings.";
+
+echo ' </div>
+</div>';
+
+?>
+
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        Fruits and Vegitables
+    </div>
+
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        Radio Fixing
+    </div>
+
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        Sotobe Driving School
+    </div>
+
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        Dr Philips Surgery
+    </div>
+
+</div>
