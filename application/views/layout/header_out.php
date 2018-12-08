@@ -64,18 +64,6 @@
                 <div class="navbar-default sidebar" role="navigation">
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
-                            <li class="sidebar-search">
-                                <div class="input-group custom-search-form">
-                                    <input type="text" class="form-control" placeholder="Search...">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    </span>
-                                </div>
-                                <!-- /input-group -->
-                            </li>
-                            
                             
                             <?php if ($visitor_email == get_default_username()  || strlen($visitor_email)==0)  
                             {?>  <br/> <li role="presentation"><p>   &nbsp;&nbsp;&nbsp;<a href="<?php echo base_url("login")?>"><button   type="button" class="btn btn-danger">User Login</button></a></p></li>
