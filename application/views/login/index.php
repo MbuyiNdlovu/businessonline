@@ -3,7 +3,7 @@
     <div class="row" >
      
                  <div align="center"> 
-        
+        <img src="<?php echo base_url("images/logo.png"); ?>" class="img-rounded" alt="Cinque Terre" width="20%" height="20%">
 </div>
 
 
