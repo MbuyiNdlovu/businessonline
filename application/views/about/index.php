@@ -2,32 +2,16 @@
 
 <div class="container">
     <div class="row">
-   
-                <?php
-                echo businessnav($business_id,$logo_url);
-                ?>
-            
+
+        <?php
+        echo businessnav($business_id, $logo_url);
+        ?>
+
         <div class="row">
             <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-
-
-
-
                 <?php
-                /*
-                 * To change this license header, choose License Headers in Project Properties.
-                 * To change this template file, choose Tools | Templates
-                 * and open the template in the editor.
-                 */
-
-                
-                
                 if ($business_about) {
                     if ($own_business) {
-                        
-                        
-                        
-                        
                         echo '<br/><div class="panel panel-default" align="center"><div class="panel-body"><h3>About ' . $business_name . '</h3></div></div>';
                         echo "<form method='post' action=" . base_url() . "about/update_about>";
                         echo "<div class='form-group'><textarea name='who_are_we'  rows='5' id='comment' class='form-control input-lg'> $business_about[who_are_we] </textarea> </div>";
@@ -38,7 +22,6 @@
                         echo '<hr class="colorgraph">
 			<div class="row">
 				<div   align="center"><input type="submit" value="Update" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
-				
 			</div>';
                         echo "</form>";
                         ;

@@ -8,7 +8,7 @@
      
 </div>
      
-<p>Phangisa was designed to help individuals <u>exhibit their businesses to tons of end users</u> remotely.</p>
+<p>Business Online is an initiative of Ngonyama Link and was designed to help individuals <u>exhibit their businesses to tons of end users</u> remotely.</p>
  
 <p>We currently have <b><?php echo $cnt_registrations; ?></b> people using this platform.</p>
 

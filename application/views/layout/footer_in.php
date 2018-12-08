@@ -13,7 +13,7 @@
                             <?php   } ?>
             
             
-          <small>Copyright © Phangisa 2018 - <?php echo date("Y"); ?></small>
+          <small>Copyright © Ngonyama Link 2018 - <?php echo date("Y"); ?></small>
         </div>
       </div>
     </footer>

@@ -3,7 +3,7 @@
     <div class="row" >
      
                  <div align="center"> 
-        <img src="<?php echo base_url("images/logo.png"); ?>" class="img-rounded" alt="Cinque Terre" width="70%" height="70%">
+        
 </div>
 
 
@@ -11,7 +11,7 @@
                 <div class="panel-body">
                     <form role="form" method="POST" action="<?php echo base_url("login/check_credentials"); ?>">
                         
-                          <h4 align="center">Phangisa Log In<small></small></h4>
+                          <h4 align="center">Business Online Log In<small></small></h4>
        
                         
                         <fieldset>

@@ -5,7 +5,7 @@
 
         <div class="panel panel-default" align="center">
             <div class="panel-body"> 
-                <h3>Phangisa catalogue</h3>
+                <h3>Business Online Catalogue</h3>
             </div>
 
         </div>

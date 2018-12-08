@@ -9,7 +9,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Phangisa</title>
+        <title>Business Online</title>
         <!-- Bootstrap Core CSS -->
         <link href="<?= base_url() ?>sbadmin2/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <!-- MetisMenu CSS -->
@@ -55,15 +55,9 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                        <a class="navbar-brand" href="<?php echo base_url("catalogue/index"); ?>">Phangisa</a>
+                        <a class="navbar-brand" href="<?php echo base_url("catalogue/index"); ?>">Business Online</a>
                 </div>
                 <!-- /.navbar-header -->
-
-
-
-
-
-
 
                 <ul class="nav navbar-top-links navbar-right">
                     <li class="dropdown">

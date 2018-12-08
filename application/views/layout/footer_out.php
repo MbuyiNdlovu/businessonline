@@ -11,9 +11,7 @@
   <strong>Want to advertise? Create  an <a href="<?php echo base_url() . 'registration' ?>"> account</a> with us.</strong> 
 </div>
                             <?php   } ?>
-            
-            
-          <small>Copyright © Phangisa 2018 - <?php echo date("Y"); ?></small>
+          <small>Copyright © Ngonyama Link 2018 - <?php echo date("Y"); ?></small>
         </div>
       </div>
     </footer>
