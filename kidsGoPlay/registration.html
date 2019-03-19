@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <title>listyobiz.co.za</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-3 fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#"><span style="color:#ff3232">listYo</span>biz</a>
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html"><i class="fas fa-home"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section class="userregitrationinform">
+        <div class="row">
+            <div class="col-sm-4 offset-4">
+                <div class="accountcreation-alert">
+                    <div class="alert alert-success" id="successful">
+                        <strong>Success</strong> Blog post added
+                    </div>
+                    <div class="alert alert-danger" id="unsuccessful">
+                        <strong>Danger</strong> Please check the log files
+                    </div>
+                </div>
+                <div class="reg_form">
+
+                </div>
+                <form action="" class="form mr-5 mt-5 mb-5 align-center">
+                    <h4><strong>CEATE AN ACCOUNT</strong></h4>
+                    <hr>
+                    <div class="form-group">
+                        <label for="name">Email address</label>
+                        <input class="form-control form-control-md" type="email" id="businessemail" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Password</label>
+                        <input class="form-control form-control-md" type="password" id="password1" placeholder="Create password">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm password">Confirm passsword</label>
+                        <input class="form-control form-control-md" type="password" id="password2" placeholder="Confirm password">
+                    </div>
+                    <a class="btn btn-info btn-block" type="submit" id="businessaccount" href="#listing.html">Create
+                        Account</a>
+                </form>
+            </div>
+        </div>
+    </section>
+    <section class="footer">
+        <div class="row ml-5 mb-5 mt-5">
+            <div class="col-sm-4 pt-5 pb-2">
+                <h4><strong>FOLLOW US</strong></h4>
+                <button class="category-btn1 btn" id="btn5"><i class="fab fa-facebook-f"></i></button>
+                <button class="category-btn1 btn" id="btn5"><i class="fab fa-twitter"></i></button>
+                <button class="category-btn1 btn" id="btn5"><i class="fab fa-instagram"></i></button>
+                <button class="category-btn1 btn" id="btn5"><i class="fab fa-youtube"></i></button>
+            </div>
+            <div class="col-sm-4 pt-5 pb-2">
+                <a href="tooltips.html">
+                    <h5><strong>FAQs</strong></h5>
+                </a>
+                <a href="tooltips.html">
+                    <h5><strong>DISCLAIMER</strong></h5>
+                </a>
+                <a href="tooltips.html">
+                    <h5><strong>TERMS AND CONDITIONS</strong></h5>
+                </a>
+                <div class="input-group mt-2 mr-5">
+                    <input class="form-control" type="email" placeholder="Subscribe to our newsletter...">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary" type="button">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 pt-5 pb-2">
+                <h4><strong>BUSINESS ADDRESS</strong></h4>
+                <P>317 Albertus Street <br>
+                    Lamontagne <br>
+                    Pretria East <br>
+                    0184
+                </P>
+            </div>
+        </div>
+    </section>
+    <section class="copyright">
+        <div class="row p-5">
+            <div class="col-sm-6 offset-4 text-aligne-center">
+                Copyright &copy; of Listyobiz <div style="display: inline" id="year"></div>
+            </div>
+        </div>
+    </section>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="/jquery/mainjs.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+
+    <script>
+        // Get the current year for the copyright
+        $('#year').text(new Date().getFullYear());
+    </script>
+</body>
+
+</html>
