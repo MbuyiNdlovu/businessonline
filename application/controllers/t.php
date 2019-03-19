@@ -24,6 +24,7 @@ class T extends CI_Controller {
         }
 
         $this->userdata = $this->session->all_userdata();
+        
     }
 
     public function categorylist($business_id) {
@@ -138,6 +139,13 @@ class T extends CI_Controller {
     }
 
     public function business_create_form() {
+        
+        
+        if(get_default_username()==$this->membersession['email']){
+            
+             redirect("login");
+        }
+        
 
         $data['logo_url'] = phangisa_logo();
 

@@ -15,7 +15,7 @@
                         <input name="password" class="form-control form-control-md" type="password" id="email" placeholder="Create password">
                     </div>
                      <a href="passwordreset.html">Forgot password</a> |
-                    <a href="registration.html">Register</a>
+                     <a href="<?php echo base_url("registration")?>">Register</a>
                     
                     <input class="form-control form-control-md" type="submit"/>
 

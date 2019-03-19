@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
     crossorigin="anonymous">
   <link rel="stylesheet" href="<?= base_url() ?>sbadmin2/css/style.css">
-  <title>listyobiz.co.za</title>
+  <title>listyobiz.co.za <?php echo $visitor_email; ?></title>
 </head>
 <body>
   <header>
@@ -22,7 +22,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#"><i class="fas fa-home"></i></a>
+                <a class="nav-link" href="<?php echo base_url();?>"><i class="fas fa-home"></i></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url("registration") ?>"><i class="fas fa-book"></i></a>

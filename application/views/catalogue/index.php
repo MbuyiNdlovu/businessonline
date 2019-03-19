@@ -104,7 +104,7 @@
                     <a class="category-btn1 btn ml-auto" id="btn3" href=""><i class="fas fa-search"></i></a>
                 </div>
                 <div id="search-list">
-                    <a href="registration.html" class="category-btn1 btn ml-auto" id="btn2">List</a>
+                    <a href="<?php echo base_url("t/business_create_form")?>" class="category-btn1 btn ml-auto" id="btn2">List</a>
                 </div>
             </div>
         </div>
@@ -126,7 +126,7 @@
             foreach ($prodserv as $ps) {
                 $prod_serv_name = (strlen($ps['productservice_name'])>0)?$ps['productservice_name']:'not set';
                 $img_src =  (strlen($ps['url'])>0)?$ps['url']:'#';
-         echo '<a href="businessprofile.html">
+         echo '<a href="'. base_url("t/view_product_service/$ps[business_id]/$ps[productservice_id]").'">
         <div class="business-image">
           <div class="image-overlay">
             <img src="https://unsplash.it/200/260" alt="Please check your internet connection">
