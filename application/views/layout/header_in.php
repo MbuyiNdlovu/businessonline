@@ -23,13 +23,15 @@
                         <ul class="navbar-nav ml-auto">
                             <?php if ($visitor_email == get_default_username() || strlen($visitor_email) == 0) {
                                 ?>  <li class="nav-item"><a class="nav-link" href="<?php echo base_url("login/index"); ?>"><i class="fas fa-user"></i></a></li>
-                            <?php } ?>
+                            <?php } else {?>
+                                <li class="nav-item"><a class="nav-link" href="<?php echo base_url("login/logout"); ?>"><i class="fas fa-user"></i></a></li>
 
-                            <li class="nav-item"><a class="nav-link" href="<?php echo base_url("catalogue/index"); ?>">SPs</a></li>
-                            <li  class="nav-item"><a class="nav-link" href="<?= base_url('search/categorylist') ?>"><i class="fas fa-book"></i></a></li>
-                            <li class="nav-item"><a class="nav-link" href="<?php echo base_url("content/investors"); ?>">Investors </a></li>
-                            <li class="nav-item"><a class="nav-link" href="<?php echo base_url() . 'feedback' ?>">Feedback </a></li>                         
-                            <li class="nav-item"><a class="nav-link" href="<?php echo base_url() . 'help' ?>">Help </a></li>  
+
+ <?php
+                            
+                            
+                                    
+                                } ?>
                         </ul>
                     </div>
                 </div>
