@@ -1,46 +1,35 @@
- 
-    <div class="panel panel-login">
-    <form role="form" method="post" action="<?php echo base_url("registration/submit"); ?>">
-        <h2>Sign Up <small></small></h2>
-        <hr class="colorgraph">
+<section class="userregitrationinform">
         <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6">
-                <div class="form-group">
-                    <input type="text" name="firstname" id="first_name" class="form-control input-lg" placeholder="Name" tabindex="1">
+            <div class="col-sm-4 offset-4">
+                <div class="accountcreation-alert">
+                    <div class="alert alert-success" id="successful">
+                        <strong>Success</strong> Blog post added
+                    </div>
+                    <div class="alert alert-danger" id="unsuccessful">
+                        <strong>Danger</strong> Please check the log files
+                    </div>
                 </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-6">
-                <div class="form-group">
-                    <input type="text" name="lastname" id="last_name" class="form-control input-lg" placeholder="Surname" tabindex="2">
+                <div class="reg_form">
+
                 </div>
+                <form action="" class="form mr-5 mt-5 mb-5 align-center">
+                    <h4><strong>CEATE AN ACCOUNT</strong></h4>
+                    <hr>
+                    <div class="form-group">
+                        <label for="name">Email address</label>
+                        <input class="form-control form-control-md" type="email" id="businessemail" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Password</label>
+                        <input class="form-control form-control-md" type="password" id="password1" placeholder="Create password">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm password">Confirm passsword</label>
+                        <input class="form-control form-control-md" type="password" id="password2" placeholder="Confirm password">
+                    </div>
+                    <a class="btn btn-info btn-block" type="submit" id="businessaccount" href="#listing.html">Create
+                        Account</a>
+                </form>
             </div>
         </div>
-
-
-
-        
-        
-        
-           <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6">
-                <div class="form-group">
-                    <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email" tabindex="1">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-6">
-                <div class="form-group">
-                    <input type="password" name="password" id="last_name" class="form-control input-lg" placeholder="Password" tabindex="2">
-                </div>
-            </div>
-        </div>
-
-        <hr class="colorgraph">
-        <div class="row">
-            <div align="center"><input type="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
-           
-        </div>
-    </form>
-        <br/><br/><br/>
-</div> 
-
-
+    </section>

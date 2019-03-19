@@ -1,36 +1,31 @@
 
-<hr/>
- 
-   <footer class="sticky-footer">
-      <div class="container">
-        <div class="text-center">
-            
-            
-              <?php if ($visitor_email == get_default_username()  || strlen($visitor_email)==0)  
-                            {?>  <div class="alert alert-danger">
-  <strong>Want to advertise? Create  an <a href="<?php echo base_url() . 'registration' ?>"> account</a> with us.</strong> 
-</div>
-                            <?php   } ?>
-          <small>Copyright © Ngonyama Link 2018 - <?php echo date("Y"); ?></small>
-        </div>
-      </div>
-    </footer>
-<br/><br/>
-</div></div>
-
-<!-- jQuery -->
-    <script src="<?=base_url()?>sbadmin2/vendor/jquery/jquery.min.js"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="<?=base_url()?>sbadmin2/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="<?=base_url()?>sbadmin2/vendor/metisMenu/metisMenu.min.js"></script>
-    <!-- Morris Charts JavaScript -->
-    <script src="<?=base_url()?>sbadmin2/vendor/raphael/raphael.min.js"></script>
-    <script src="<?=base_url()?>sbadmin2/vendor/morrisjs/morris.min.js"></script>
-    <script src="<?=base_url()?>sbadmin2/data/morris-data.js"></script>
-    <!-- Custom Theme JavaScript -->
-    <script src="<?=base_url()?>sbadmin2/dist/js/sb-admin-2.js"></script>
-    
+  <section class="footer">
+    <div class="row ml-5 mb-5 mt-5">
+       
    
+    
+    </div>
+  </section>
+  <section class="copyright">
+    <div class="row p-5">
+      <div class="col-sm-6 offset-4 text-aligne-center">
+        Copyright &copy; of Listyobiz <div style="display: inline" id="year"></div>
+      </div>
+    </div>
+  </section>
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="/jquery/mainjs.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+
+  <script>
+    // Get the current year for the copyright
+    $('#year').text(new Date().getFullYear());
+  </script>
 </body>
+
 </html>
+ 
