@@ -26,6 +26,8 @@ class Login extends CI_Controller {
 
     public function check_credentials() {
         $data = $this->input->post();
+        
+        
         $this->userlib->getUser(strtolower($data['email']), do_hash($data['password'], 'md5'));
         if ($this->userlib->id) {
             $this->session->set_userdata(array("email" => strtolower($this->userlib->email), "password" => $this->userlib->password));

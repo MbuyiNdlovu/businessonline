@@ -15,7 +15,7 @@
   <header>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-3 fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#"><span style="color:#ff3232">listYo</span>biz</a>
+        <a class="navbar-brand" href="<?= base_url() ?>"><span style="color:#ff3232">listYo</span>biz</a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
           <span class="navbar-toggler-icon"></span>
         </button>

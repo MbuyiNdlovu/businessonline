@@ -1,14 +1,13 @@
+<br/><br/><br/><br/>
 <div class="container">
     <div class="row">
-        <div class="col-sm-6 col-md-4 col-md-offset-4">
-
-
-            <div class="account-wall">
-
-              
-
-                <h4 class="text-center login-title"><b>Search for products or services</b></h4>
-                <?php
+        <!-- Container (Services Section) -->
+        <div class="container-fluid text-center">
+            <ul class="list-group">
+                <li class="list-group-item active">Please select the category</li>
+<?php
+ 
+         
                 $search = array('name' => 'search_term', 'type' => 'text', 'class' => "form-control", 'placeholder' => "Search by product / service");
                 $password = array('name' => 'password', 'type' => 'password', 'class' => "form-control");
                 $a_subcategory = array('name' => 'subcategory_id', 'type' => 'hidden', "value" => $subcategory_id);
@@ -31,14 +30,13 @@
 
                 echo "<a href=" . base_url() . "search/get_all_products_services/$ideal_business_id>All</a></p>";
                 ?>
+ 
+            </ul>
+        </div>  
+    </div>  
+</div>
 
-
-
-            </div>
-        </div>
-
-    </div>
-    <br/>
+ 
     <?php
     /*
      * To change this license header, choose License Headers in Project Properties.
@@ -89,12 +87,4 @@
             </div><!--end features-->
             <br/>';
         }
-    } else {
-
-        echo '<div class="panel panel-default">
-<div class="panel-body">';
-        echo "Nothing was found.";
-        echo ' </div>
-</div>';
-    }
- 
+    }  
