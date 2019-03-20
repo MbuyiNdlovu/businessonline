@@ -2,14 +2,14 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-10 offset-1">
-                <a href="<?php echo base_url("search/subcategorylist/1"); ?>" > <button class="category-btn1 btn" id="btn1"><i class="fas fa-music"></i></button> </a>
-                <a href="<?php echo base_url("search/subcategorylist/2"); ?>" > <button class="category-btn1 btn" id="btn4"><i class="fas fa-laptop"></i></button></a>
-                <a href="<?php echo base_url("search/subcategorylist/3"); ?>" > <button class="category-btn1 btn" id="btn5"><i class="fas fa-pills"></i></button></a>
-                <a href="<?php echo base_url("search/subcategorylist/4"); ?>" >  <button class="category-btn1 btn" id="btn6"><i class="fas fa-gas-pump"></i></button></a>
-                <a href="<?php echo base_url("search/subcategorylist/5"); ?>" > <button class="category-btn1 btn" id="btn7"><i class="fas fa-bed"></i></button></a>
-                <a href="<?php echo base_url("search/subcategorylist/6"); ?>" >  <button class="category-btn1 btn" id="btn8"><i class="fas fa-user-md"></i></button></a>
-                <a href="<?php echo base_url("search/subcategorylist/5"); ?>" > <button class="category-btn1 btn" id="btn7"><i class="fas fa-utensils"></i></button></a>
-                <a href="<?php echo base_url("search/subcategorylist/6"); ?>" >  <button class="category-btn1 btn" id="btn8"><i class="fas fa-tshirt"></i></button></a>
+                <a href="<?php echo base_url("catalogue/index/1"); ?>" > <button class="category-btn1 btn" id="btn1"><i class="fas fa-music"></i></button> </a>
+                <a href="<?php echo base_url("catalogue/index/2"); ?>" > <button class="category-btn1 btn" id="btn4"><i class="fas fa-laptop"></i></button></a>
+                <a href="<?php echo base_url("catalogue/index/3"); ?>" > <button class="category-btn1 btn" id="btn5"><i class="fas fa-pills"></i></button></a>
+                <a href="<?php echo base_url("catalogue/index/4"); ?>" >  <button class="category-btn1 btn" id="btn6"><i class="fas fa-gas-pump"></i></button></a>
+                <a href="<?php echo base_url("catalogue/index/5"); ?>" > <button class="category-btn1 btn" id="btn7"><i class="fas fa-bed"></i></button></a>
+                <a href="<?php echo base_url("catalogue/index/6"); ?>" >  <button class="category-btn1 btn" id="btn8"><i class="fas fa-user-md"></i></button></a>
+                <a href="<?php echo base_url("catalogue/index/7"); ?>" > <button class="category-btn1 btn" id="btn7"><i class="fas fa-utensils"></i></button></a>
+                <a href="<?php echo base_url("catalogue/index/8"); ?>" >  <button class="category-btn1 btn" id="btn8"><i class="fas fa-tshirt"></i></button></a>
             </div>
         </div>
     </div>
@@ -104,83 +104,46 @@
                     <a class="category-btn1 btn ml-auto" id="btn3" href=""><i class="fas fa-search"></i></a>
                 </div>
                 <div id="search-list">
-                    <a href="registration.html" class="category-btn1 btn ml-auto" id="btn2">List</a>
+                    <a href="<?php echo base_url("t/business_create_form")?>" class="category-btn1 btn ml-auto" id="btn2">List</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<section class="results-display">
+
+
+  <section class="results-display">
     <div class="results-overlay">
-        <a href="businessprofile.html">
-            <div class="business-image">
-                <div class="image-overlay">
-                    <img src="https://unsplash.it/200/260" alt="Please check your internet connection">
-                </div>
-                <p><strong>BUSINESS NAME</strong></p>
-            </div>
-        </a>
-        <a href="businessprofile.html">
-            <div class="business-image">
-                <div class="image-overlay">
-                    <img src="https://unsplash.it/200/260" alt="Please check your internet connection">
-                </div>
-                <p><strong>BUSINESS NAME</strong></p>
-            </div>
-        </a>
-        <a href="businessprofile.html">
-            <div class="business-image">
-                <div class="image-overlay">
-                    <img src="https://unsplash.it/200/260" alt="Please check your internet connection">
-                </div>
-                <p><strong>BUSINESS NAME</strong></p>
-            </div>
-        </a>
-        <a href="businessprofile.html">
-            <div class="business-image">
-                <div class="image-overlay">
-                    <img src="https://unsplash.it/200/260" alt="Please check your internet connection">
-                </div>
-                <p><strong>BUSINESS NAME</strong></p>
-            </div>
-        </a>
-        <a href="businessprofile.html">
-            <div class="business-image">
-                <div class="image-overlay">
-                    <img src="https://unsplash.it/200/260" alt="Please check your internet connection">
-                </div>
-                <p><strong>BUSINESS NAME</strong></p>
-            </div>
-        </a>
-        <a href="businessprofile.html">
-            <div class="business-image">
-                <div class="image-overlay">
-                    <img src="https://unsplash.it/200/260" alt="Please check your internet connection">
-                </div>
-                <p><strong>BUSINESS NAME</strong></p>
-            </div>
-        </a>
-        <a href="businessprofile.html">
-            <div class="business-image">
-                <div class="image-overlay">
-                    <img src="https://unsplash.it/200/260" alt="Please check your internet connection">
-                </div>
-                <p><strong>BUSINESS NAME</strong></p>
-            </div>
-        </a>
-        <a href="businessprofile.html">
-            <div class="business-image">
-                <div class="image-overlay">
-                    <img src="https://unsplash.it/200/260" alt="Please check your internet connection">
-                </div>
-                <p><strong>BUSINESS NAME</strong></p>
-            </div>
-        </a>
+        <?php
+        
+        
+       
+        
+        if (sizeof($prodserv) > 0) {
+            
+             
+            
+            foreach ($prodserv as $ps) {
+                $prod_serv_name = (strlen($ps['productservice_name'])>0)?$ps['productservice_name']:'not set';
+                $img_src =  (strlen($ps['url'])>0)?$ps['url']:'#';
+         echo '<a href="'. base_url("t/view_product_service/$ps[business_id]/$ps[productservice_id]").'">
+        <div class="business-image">
+          <div class="image-overlay">
+            <img src="https://unsplash.it/200/260" alt="Please check your internet connection">
+          </div>
+          <p><strong>'. $prod_serv_name. '</strong></p>
+        </div>
+      </a>';
+    }
+}
 
-
+?>
+    </div>
 </section>
 
 
+
+ 
 
 
 
@@ -203,85 +166,79 @@
 <br/>
 <div class="container">
     <div class="row">
-
-
         <div class="panel panel-default" align="center">
-          
         </div>
         <br/>
-
-
         <!-- Container (Services Section) -->
         <div class="container-fluid text-center">
 
             <ul class="list-group">
-              
-                <br/>
-                <?php
-                $i = 0;
-                foreach ($businesses as $b) {
-                    //$i++;
 
-                    //$id = $b['business_id']; // urlencode( base64_encode( ) );
-                    //  echo ' <br/><a href="'.  base_url("login/shop_handle/$b[business_id]").'"><img src="'.$b['logo_url'].'" class="img-thumbnail" width="35%" height="35%" alt="Cinque Terre"></a>';
-                    //echo "<li class='list-group-item'><a href=" . base_url("login/shop_handle/$id") . "> " . $b['business_name'] . "</a> </li><br/>";
-                    // echo "<p align='center'> ".facebook_like(base_url("index.php/login/shop_handle/$b[business_id]"))."</p>";
-                }
-                ?>
+                <br/>
+<?php
+$i = 0;
+foreach ($businesses as $b) {
+    //$i++;
+    //$id = $b['business_id']; // urlencode( base64_encode( ) );
+    //  echo ' <br/><a href="'.  base_url("login/shop_handle/$b[business_id]").'"><img src="'.$b['logo_url'].'" class="img-thumbnail" width="35%" height="35%" alt="Cinque Terre"></a>';
+    //echo "<li class='list-group-item'><a href=" . base_url("login/shop_handle/$id") . "> " . $b['business_name'] . "</a> </li><br/>";
+    // echo "<p align='center'> ".facebook_like(base_url("index.php/login/shop_handle/$b[business_id]"))."</p>";
+}
+?>
 
             </ul>
-         
-            <?php
-            if ($promotions) {
 
-                $cnt = 0;
-                $k = 0;
-                $i = 0;
-                foreach ($promotions as $p) {
+                <?php
+                if ($promotions) {
 
-                 /*   $cnt++;
+                    $cnt = 0;
+                    $k = 0;
+                    $i = 0;
+                    foreach ($promotions as $p) {
 
-                    if ($i % 3 == 0) {
-                        echo '<div class="row">';
-                        echo '<div class="col-sm-4">';
-                        echo "<img src=$p[url] width='20%' height='20%'><i class='fa fa-tags'></i> ";
-                        echo "<h4><a href=" . base_url() . "t/view_product_service/$p[business_id]/$p[productservice_id]>";
-                        echo $p['productservice_name'] . '</a></h4>';
-                        echo ' <p>Price : ' . $p['price'] . '</p>';
-                        echo ' <p>' . $p['productservice_description'] . '</p>';
+                        /*   $cnt++;
 
-                        echo "<p><a href=" . base_url("contactform/index/$p[business_id]/$p[productservice_id]") . "><i class='fa fa-envelope-o' ></i></a></p>";
+                          if ($i % 3 == 0) {
+                          echo '<div class="row">';
+                          echo '<div class="col-sm-4">';
+                          echo "<img src=$p[url] width='20%' height='20%'><i class='fa fa-tags'></i> ";
+                          echo "<h4><a href=" . base_url() . "t/view_product_service/$p[business_id]/$p[productservice_id]>";
+                          echo $p['productservice_name'] . '</a></h4>';
+                          echo ' <p>Price : ' . $p['price'] . '</p>';
+                          echo ' <p>' . $p['productservice_description'] . '</p>';
 
-
-                        echo '</div> ';
-                    } else {
-
-                        echo '<div class="col-sm-4">';
-                        echo "<img src=$p[url] width='20%' height='20%'><i class='fa fa-tags'></i> ";
-                        echo "<h4><a href=" . base_url() . "t/view_product_service/$p[business_id]/$p[productservice_id]>";
-                        echo $p['productservice_name'] . '</a></h4>';
-                        echo ' <p>Price : ' . $p['price'] . '</p>';
-                        echo '  <p>' . $p['productservice_description'] . '</p>';
-                        echo "<p><a href=" . base_url("contactform/index/$p[business_id]/$p[productservice_id]") . "><i class='fa fa-envelope-o'></i></a></p>";
-
-                        echo '</div> ';
+                          echo "<p><a href=" . base_url("contactform/index/$p[business_id]/$p[productservice_id]") . "><i class='fa fa-envelope-o' ></i></a></p>";
 
 
-                        if ($cnt % 3 == 0) {
-                            echo "</div><br/><br/>";
-                        }
+                          echo '</div> ';
+                          } else {
+
+                          echo '<div class="col-sm-4">';
+                          echo "<img src=$p[url] width='20%' height='20%'><i class='fa fa-tags'></i> ";
+                          echo "<h4><a href=" . base_url() . "t/view_product_service/$p[business_id]/$p[productservice_id]>";
+                          echo $p['productservice_name'] . '</a></h4>';
+                          echo ' <p>Price : ' . $p['price'] . '</p>';
+                          echo '  <p>' . $p['productservice_description'] . '</p>';
+                          echo "<p><a href=" . base_url("contactform/index/$p[business_id]/$p[productservice_id]") . "><i class='fa fa-envelope-o'></i></a></p>";
+
+                          echo '</div> ';
+
+
+                          if ($cnt % 3 == 0) {
+                          echo "</div><br/><br/>";
+                          }
+                          }
+
+                          /*  echo '<div class="panel panel-default">
+                          <div class="panel-body">';
+                          echo "<img src=$bps[url] width='5%' height='5%'>" . $bps['productservice_name'] . " . <a href=" . base_url() . "index.php/t/view_product_service/$business_id/$bps[productservice_id]>view</a> | <a href=" . base_url() . "index.php/trading/verify_remove_product_service/$business_id/$bps[productservice_id]><i class='glyphicon glyphicon-remove'></i></a>";
+                          echo ' </div>
+                          </div>'; */
+
+                        $i++;
                     }
-
-                    /*  echo '<div class="panel panel-default">
-                      <div class="panel-body">';
-                      echo "<img src=$bps[url] width='5%' height='5%'>" . $bps['productservice_name'] . " . <a href=" . base_url() . "index.php/t/view_product_service/$business_id/$bps[productservice_id]>view</a> | <a href=" . base_url() . "index.php/trading/verify_remove_product_service/$business_id/$bps[productservice_id]><i class='glyphicon glyphicon-remove'></i></a>";
-                      echo ' </div>
-                      </div>'; */
-
-                    $i++;
                 }
-            }
-            ?>
+                ?>
 
 
 

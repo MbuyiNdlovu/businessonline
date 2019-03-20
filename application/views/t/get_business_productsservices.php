@@ -1,9 +1,8 @@
-<br/>
-<div class="container">
-    <div class="row">
-       
+ <section class="userregitrationinform">
+        <div class="row">
+            <div class="col-sm-4 offset-4">
                  <?php
-                echo businessnav($business_id,$logo_url);
+               // echo businessnav($business_id,$logo_url);
                 ?>
          
         <!-- Container (Services Section) -->
@@ -158,3 +157,4 @@
 
     </div>
 </div>
+ </section>

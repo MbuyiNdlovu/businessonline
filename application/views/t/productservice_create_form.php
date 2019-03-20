@@ -42,6 +42,14 @@
             echo form_input(array("name" => "productsevicecode", "type" => "text", 'class' => 'form-control', 'placeholder' => 'Code'));
             ?>
         </div>
+        
+        
+           <div class="form-group">
+            <?php
+            echo form_input(array("name" => "business_type_id", "type" => "text", 'class' => 'form-control', 'value' => 1) );
+            ?>
+        </div>
+        
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-6">
                 <div class="form-group">

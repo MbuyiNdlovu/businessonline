@@ -53,6 +53,7 @@ class search extends CI_Controller {
 
         $this->bukaweb_layout("search/get_products_services_by_subcategory_id", $data);
     }
+    
 
     public function get_products_services_by_subcategory_id_and_search_term() {
         $fdata = $this->input->post();
@@ -86,6 +87,21 @@ class search extends CI_Controller {
         $data['prodserv'] = $this->productservicedb->get_productservice($fdata['search_term'], $this->membersession['ideal_business_id']);
         $data['onlineuseremail'] = $this->userlib->email;
         $this->bukaweb_layout("search/get_all_products_services", $data);
+    }
+    
+    
+        public function get_products_services_by_business_type_id($business_type_id) {
+        if(!is_numeric($business_type_id)){die("Something went wrong.");}
+        
+        $data['visitor_email'] = $this->membersession['email'];
+        $data['userID'] = $this->userlib->id;
+         
+        $data['ideal_business_id'] = isset($this->membersession['ideal_business_id']) ? $this->membersession['ideal_business_id'] : 0;
+        
+        $data['prodserv'] = $this->productservicedb->get_products_services_by_business_type_id($business_type_id, null, $data['ideal_business_id']);
+        $data['onlineuseremail'] = $this->userlib->email;
+
+        $this->bukaweb_layout("search/get_products_services_by_business_type_id", $data);
     }
 
 }

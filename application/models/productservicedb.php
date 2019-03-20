@@ -128,6 +128,45 @@ class productservicedb extends CI_Model {
         return !empty($query) ? $query->result_array() : false;
     }
 
-    
+       public function get_products_services_by_business_type_id($business_type_id, $search_term = null, $ideal_business_id) {
+        if ($search_term == null) {
+
+            if ($ideal_business_id == 0) {
+
+                $sql = "select productservice.productservice_id,productservice.productservice_name,
+                productservice.productservice_description,productservice.price,productservice.productservice_code,productservice.url,productservice.business_id,productservice.member_id,
+                 business.business_name,business.location,business.contact_no,business.fax,business.email
+                from productservice left join business on (business.business_id = productservice.business_id) left join member on (member.member_id = productservice.member_id) where (productservice.business_type_id = $business_type_id and productservice.active=1)";
+            } else {
+
+
+                $sql = "select productservice.productservice_id,productservice.productservice_name,
+                productservice.productservice_description,productservice.productservice_code,productservice.price,productservice.url,productservice.business_id,productservice.member_id,
+                 business.business_name,business.location,business.contact_no,business.fax,business.email
+                from productservice left join business on (business.business_id = productservice.business_id) left join member on (member.member_id = productservice.member_id) where (productservice.business_type_id = $business_type_id and productservice.active=1 and business.business_id=$ideal_business_id)";
+            }
+        } else {
+
+            if ($ideal_business_id == 0) {
+
+                $sql = "select productservice.productservice_id,productservice.productservice_name,
+                productservice.productservice_description,productservice.productservice_code,productservice.price,productservice.url,productservice.business_id,productservice.member_id,
+                 business.business_name,business.location,business.contact_no,business.fax,business.email
+                from productservice left join business on (business.business_id = productservice.business_id) left join member on (member.member_id = productservice.member_id) where (productservice.business_type_id = $business_type_id and productservice.active=1 and productservice.productservice_name like '%$search_term%' )";
+            } else {
+ 
+                $sql = "select productservice.productservice_id,productservice.productservice_name,
+                productservice.productservice_description,productservice.productservice_code,productservice.price,productservice.url,productservice.business_id,productservice.member_id,
+                 business.business_name,business.location,business.contact_no,business.fax,business.email
+                from productservice left join business on (business.business_id = productservice.business_id) left join member on (member.member_id = productservice.member_id) where (productservice.business_type_id = $business_type_id and productservice.active=1 and business.business_id=$ideal_business_id and productservice.productservice_name like '%$search_term%' )";
+            
+            
+                
+            }
+        }
+
+        $query = $this->db->query($sql);
+        return !empty($query) ? $query->result_array() : false;
+    }
     
 }
