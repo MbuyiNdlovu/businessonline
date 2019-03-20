@@ -16,6 +16,8 @@ class T extends CI_Controller {
         $this->load->model(array('memberdb'));
         $this->load->model(array("businesscategorylist_db", "businesscategorylist_includes_db"));
         $this->membersession = $this->session->all_userdata();
+                $this->load->model(array('memberdb', 'about_db'));
+
         $membersession = $this->membersession;
         $this->userlib->getUser($membersession['email'], $membersession['password']);
         $this->starndard_amount = 25;
@@ -410,6 +412,8 @@ class T extends CI_Controller {
             $data['logo_url'] = phangisa_logo();
         }
         $data['visitor_email'] = $this->membersession['email'];
+        $data['business_about'] = $this->about_db->get_business_about($business_id);
+
         $this->bukaweb_layout("t/view_product_service", $data);
     }
 
