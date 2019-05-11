@@ -8,7 +8,7 @@ class memberdb extends CI_Model {
     }
 
     public function AddMember($name, $surname, $dob, $gender, $country_id, $provinceID, $email, $password, $activation_code) {
-        $data = array("active" => 0, 'member_name' => $name, 'member_surname' => $surname, 'member_dob' => $dob, 'member_gender' => $gender, 'country_id' => $country_id, 'member_province_id' => $provinceID, 'member_email' => $email, 'member_password' => $password, 'member_date_added' => date('Y-m-d H:i:s'), 'activation_code' => $activation_code);
+        $data = array("active" => 1, 'member_name' => $name, 'member_surname' => $surname, 'member_dob' => $dob, 'member_gender' => $gender, 'country_id' => $country_id, 'member_province_id' => $provinceID, 'member_email' => $email, 'member_password' => $password, 'member_date_added' => date('Y-m-d H:i:s'), 'activation_code' => $activation_code);
         $this->db->insert('member', $data);
     }
 

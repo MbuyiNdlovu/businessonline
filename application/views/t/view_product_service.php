@@ -16,19 +16,12 @@
                     <p><?php
                 if ($own_business) {
 
-
-                  
-
-                    echo "<a href=" . base_url() . "t/product_service_edit_form/$product_service[business_id]/$product_service[productservice_id]/url></a>";
-                  
+                  /*  echo "<a href=" . base_url() . "t/product_service_edit_form/$product_service[business_id]/$product_service[productservice_id]/url></a>";
                     echo '<hr class="colorgraph">';
-
                     if ($product_service) {
                         echo '<form method="post" action=' . base_url() . 't/update_product_service>';
-
                         echo "<input name='business_id' type='hidden' value=$business_id>";
                         echo "<input name='productservice_id' type='hidden' value=$productservice_id>";
-
                         echo '<div class="form-group"><label for="on_promotion" class="col-sm-3 control-label">On promotion?</label><br/>';
                         $a_promotion = array(0 => "No", 1 => "Yes");
                         echo form_dropdown("on_promotion", $a_promotion, $product_service['on_promotion'], 'class="form-control"');
@@ -38,15 +31,12 @@
                         echo "<input name='productservice_name' type='text' class='form-control input-lg' value='$product_service[productservice_name]'>";
                         echo '</div>';
                         echo '<hr class="colorgraph">';
-
                         echo '<div class="form-group"><label for="on_promotion" class="col-sm-3 control-label">Description:</label><br/>';
                         echo "<input name='productservice_description'  type='text' class='form-control input-lg' value='$product_service[productservice_description]'>";
                         echo '</div>';
-
                         echo '<hr class="colorgraph">';
                         echo '<div class="form-group"><label for="on_promotion" class="col-sm-3 control-label">Code:</label><br/>';
                         echo " <input name='productservice_code' type='text' class='form-control input-lg' value='$product_service[productservice_code]'>";
-
                         echo '   </div>';
                         echo '<hr class="colorgraph">';
                         echo '<div class="form-group"><label for="on_promotion" class="col-sm-3 control-label">Category:</label>';
@@ -58,26 +48,18 @@
                         } else {
                             
                         }
-
                         echo '</div>';
-
                         echo '<hr class="colorgraph">';
-
                         echo '<div class="form-group"><label for="on_promotion" class="col-sm-3 control-label">Price:</label>';
-
                         echo "<input name='price' type='text' class='form-control input-lg' value='$product_service[price]'>";
-
                         echo '</div>';
                         echo '<hr class="colorgraph">';
-                        
-
                         echo '<hr class="colorgraph">
                     <div class="row">
                         <div class="col-xs-12 col-md-12"><input type="submit" value="Update" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
                     </div>';
-
                         echo '</form>';
-                    }
+                    }*/
                 } else {
                     if ($product_service) {
                         ?>
@@ -112,7 +94,7 @@
                   <?php
                 if ($business_about) {
                     if ($own_business) {
-                        echo "<form method='post' action=" . base_url() . "about/update_about>";
+                     /*   echo "<form method='post' action=" . base_url() . "about/update_about>";
                         echo "<div class='form-group'><textarea name='who_are_we'  rows='5' id='comment' class='form-control input-lg'> $business_about[who_are_we] </textarea> </div>";
                         echo "<div class='form-group'><textarea name='what_we_do'   rows='5' id='comment' class='form-control input-lg'>$business_about[what_we_do] </textarea></div>";
                         echo "<div class='form-group'><textarea name='our_mission'   rows='5' id='comment' class='form-control input-lg'>$business_about[our_mission] </textarea> </div>";
@@ -123,7 +105,7 @@
 				<div   align="right"><input type="submit" value="Update" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
 			</div>';
                         echo "</form>";
-                        ;
+                        ;*/
                     } else {
                         echo "<hr/><b>Who are  : </b><br/><br/>";
                         echo "<p> $business_about[who_are_we]</p><hr/>";
@@ -142,44 +124,29 @@
                 } else {
 
                     if ($own_business) {
-
-                        echo '<br/><div class="panel panel-default" align="center"><div class="panel-body"><h3>About ' . $business_name . '</h3></div></div>';
-
+                       /* echo '<br/><div class="panel panel-default" align="center"><div class="panel-body"><h3>About ' . $business_name . '</h3></div></div>';
                         echo "
 			<hr class='colorgraph'>";
-
                         echo "<form method='post' action=" . base_url() . "about/add_about>";
                         echo "<div class='form-group'><textarea class='form-control' rows='5' id='comment' name='who_are_we' placeholder='Describe your business here...'></textarea> </div>";
-
-
                         echo "<div class='form-group'><textarea class='form-control' rows='5' id='comment' name='what_we_do' placeholder='Describe what your business does here...'></textarea> </div>";
-
-
                         echo "<div class='form-group'><textarea class='form-control' rows='5' id='comment' name='our_mission' placeholder='Describe what your business mission?...'></textarea> </div>";
-
                         echo "<div class='form-group'><textarea class='form-control' rows='5' id='comment' name='we_love_our_clients' placeholder='What do you say about your clients?'></textarea> </div>";
-
-
-
                         echo "<input name='business_id'   type='hidden' value=$business_id>";
                         echo '<hr class="colorgraph">
 			<div class="row">
 				<div class="col-xs-12 col-md-12"><input type="submit" value="Add" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
-				
 			</div>';
-                        echo "</form>";
-                    } else {
-                        
+                        echo "</form>";*/
+                    } else {  
                     }
                 }
                 ?>
-                
                     <button class="category-btn3 btn" id="btn8">
                         <div class="count">Visit</div><i class="fas fa-map-marker-alt"></i>
                     </button>
                     <button class="category-btn3 btn" id="btn9">
                         <div class="count">Message</div><i class="far fa-envelope"></i>
-
                     </button>
                     <button class="category-btn3 btn" id="btn10">
                         <div class="count">Call</div><i class="fas fa-phone"></i>
@@ -187,68 +154,6 @@
                     <button class="category-btn3 btn" id="btn11">
                         <div class="count">Share</div><i class="fas fa-share-alt"></i>
                     </button>
-                    <hr>
-                    <div class="selected-option">
-                    </div>
-                    <hr>
-                    <p><strong>People's Reaction</strong></p>
-                    <button class="category-btn4 btn" id="btn12">
-                        <span class="badge badge-primary">790</span>
-                        <div class="count"><i class="far fa-heart"></i>
-                        </div>
-                    </button>
-                    <button class="category-btn4 btn" id="btn13">
-                        <span class="badge badge-primary">300</span>
-                        <div class="count"><i class="far fa-thumbs-down"></i></div>
-                    </button>
-                    </button>
-                    <p class="mt-3"><strong>Share Your Comments</strong></p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis temporibus suscipit quia
-                        obcaecati voluptate mollitia ipsam dolorum, molestias ratione illum?
-                    </p>
-                    <div class="input-group mt-2 mr-5 mb-2">
-                        <input class="form-control" type="email" placeholder="Share your comment...">
-                        <div class="input-group-append">
-                            <button class="btn btn-secondary" type="button"><i class="fas fa-share-square"></i></button>
-                        </div>
-                    </div>
-                    <p><strong>Comments</strong></p>
-                    <div class="comments mt-2">
-                        <div class="media mb-3">
-                            <img class="mr-3 align-self-center rounded-circle" src="https://source.unsplash.com/random/90x94">
-                            <div class="media-body">
-                                <p><strong>Mtwebhasi Mkhize</strong></p>
-                                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
-                                    is in faucibus <a href="#"> Read More..</a>.</p>
-                            </div>
-                        </div>
-                        <div class="media mb-3">
-                            <img class="mr-3 align-self-center rounded-circle" src="https://source.unsplash.com/random/90x94">
-                            <div class="media-body">
-                                <p><strong>Mtwebhasi Mkhize</strong></p>
-                                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
-                                    is in faucibus <a href="#"> Read More..</a>.</p>
-                            </div>
-                        </div>
-                        <div class="media mb-3">
-                            <img class="mr-3 align-self-center rounded-circle" src="https://source.unsplash.com/random/90x94">
-                            <div class="media-body">
-                                <p><strong>Mtwebhasi Mkhize</strong></p>
-                                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
-                                    is in faucibus <a href="#"> Read More..</a>.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="socialmedia-following  mt-5">
-                        <h6><strong>FOLLOW THIS BUSINESS ON SOCIAL MEDIA</strong></h6>
-                        <button class="category-btn1 btn" id="btn5"><i class="fab fa-facebook-f"></i></button>
-                        <button class="category-btn1 btn" id="btn5"><i class="fab fa-twitter"></i></button>
-                        <button class="category-btn1 btn" id="btn5"><i class="fab fa-instagram"></i></button>
-                        <button class="category-btn1 btn" id="btn5"><i class="fab fa-youtube"></i></button>
-                    </div>
-                    <div class="recommended-business mt-4">
-                        <p><strong>RECOMMENDED SIMILAR BUSINESSES IN THE AREA</strong></p>
-                    </div>
                 </div>
             </div>
         </div>

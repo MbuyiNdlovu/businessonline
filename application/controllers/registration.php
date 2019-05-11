@@ -32,9 +32,11 @@ class Registration extends CI_Controller {
 
     public function submit() {
         $fdata = $this->input->post();
+        
+        print_r($fdata);
         $success_status = FALSE;
 //verifications
-        if ($fdata['email']) {
+        /*if ($fdata['email']) {
             if ($this->memberdb->emailExists(strtolower($fdata['email']))) {
                 $this->session->set_userdata($fdata);
                 echo "That username is already used , please choose a different user name <a href=" . base_url() . "index.php/registration/index>Continue</a>";
@@ -53,14 +55,14 @@ class Registration extends CI_Controller {
             }
             $success_status = TRUE;
         }
-
-        if ($success_status == TRUE) {
-            $activation_code = do_hash($fdata['firstname'], 'md5');
-            $this->memberdb->AddMember($fdata['firstname'], $fdata['lastname'], '1970-01-01', 0,101, 2, strtolower($fdata['email']), do_hash($fdata['password'], 'md5'), $activation_code);
-            $this->marketing_db->AddMember(strtolower($fdata['email']), $fdata['firstname'], $fdata['lastname']);
-            $this->send_confirmation($fdata['firstname'], $fdata['email'], $activation_code, $fdata['password']);
-            redirect("registration/account_created_thank_you");
-        }
+*/
+        //if ($success_status == TRUE) {
+            $activation_code = do_hash($fdata['email'], 'md5');
+            $this->memberdb->AddMember(strtolower($fdata['email']), "", '1970-01-01', 0,101, 2, strtolower($fdata['email']), do_hash($fdata['password'], 'md5'), $activation_code);
+           // $this->marketing_db->AddMember(strtolower($fdata['email']), $fdata['firstname'], $fdata['lastname']);
+            //$this->send_confirmation($fdata['firstname'], $fdata['email'], $activation_code, $fdata['password']);
+            //redirect("registration/account_created_thank_you");
+       // }
     }
 
     public function checkPassword($pwd) {

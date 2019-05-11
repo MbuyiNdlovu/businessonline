@@ -48,6 +48,7 @@ class catalogue extends CI_Controller {
         $data['promotions'] = $this->productservicedb->get_promotions();
 
         $data['visitor_email'] = $this->membersession['email'];
+ 
         $this->bukaweb_layout("catalogue/index", $data);
     }
 
